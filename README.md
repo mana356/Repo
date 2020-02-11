@@ -1,5 +1,5 @@
 # About
 
-Simple bot for image searches with keywords.
+Simple Reddit reply bot for image searches with keywords.
 Currently searches Giphy Stickers, Giphy Gifs and Imgur Top Search Results.
 

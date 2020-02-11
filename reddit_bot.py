@@ -1,11 +1,22 @@
-import praw, re, time, pytz, yaml, threading, random, requests, base64
+import praw, re, time, pytz, yaml, threading, requests, base64, logging, json
+from datetime import date
+
+today = date.today()
+fname = "BotLogFile_" + today.strftime("%b-%d-%Y") + ".log"
+
+logging.basicConfig(filename=fname, 
+                    format='%(asctime)s %(message)s', 
+                    filemode='w')
+
+logger=logging.getLogger() 
+logger.setLevel(logging.DEBUG)
 
 def load_config(config_file):
     with open(config_file, 'r') as stream:
         try:
             return yaml.safe_load(stream)
         except yaml.YAMLError as exc:
-            print(exc)
+            logger.debug("Config not found! | error: "+exc) 
 
 config = load_config('config.yml')
 
@@ -23,47 +34,52 @@ def imageSearch(memeName):
        
 
 def imgurSearch(searchText):
-    print('imgur search started')
+    logger.info('imgur search started for text: '+searchText)
     imgurSearchUrl = "https://api.imgur.com/3/gallery/search/top/all/1?q=" 
     imgurAccessHeader = {"Accept": "application/json", "Content-Type": "application/json","Authorization": config['ImgurAuth']}
     imgurQuery = searchText
     imgurSearchUrl = imgurSearchUrl + imgurQuery
+    logger.info(imgurSearchUrl)
     try:
       imgurResponse = requests.get(imgurSearchUrl,headers=imgurAccessHeader)
       data = imgurResponse.json()["data"][0]
       meme = {"title":data["title"], "url": data["link"]}
-      print(meme)
+      logger.info("New Reply: "+json.dumps(meme))
       return [meme]
     except:
-      print("not found on imgur")
+      logger.info("not found on imgur: "+searchText)
       return []
 
 def giphySearch(searchText,searchType):
-    print('giphy search started')
+    logger.info('giphy search started for type: '+searchType+" and text: "+searchText)
     giphySearchUrl = "https://api.giphy.com/v1/"+searchType+"/search?api_key="+config['GiphyAuth']+"&limit=1&q="
     giphyQuery = searchText
     giphySearchUrl = giphySearchUrl + giphyQuery
-    print(giphySearchUrl)
-    try:
-        giphyResponse = requests.get(giphySearchUrl)
+    logger.info(giphySearchUrl)
+    try:        
+        giphyResponse = requests.get(giphySearchUrl)        
         data = giphyResponse.json()["data"][0]
         meme = {"title":data["title"], "url": data["url"]}
-        print(meme)
+        logger.info("New Reply: "+json.dumps(meme))
         return [meme]
     except:
-        print("not found on giphy for type: "+ searchType)
+        logger.info("not found on giphy for type: "+ searchType)
         return []
 
 def AddReply(results, comment):    
     reply = "[{}]({})\n\n  ".format(results[0]["title"],results[0]["url"])    
     try:
         if comment is not None:
-            comment.reply(reply)      
+            comment.reply(reply) 
+            fh = open("commented.txt","a")
+            fh.write(comment.id)
+            fh.write("\n")     
+            fh.close()
     except:
         return []
 
 def georgeSubListener():
-    print('George is listening now!')
+    logger.info('George is listening now!')
     sub = config['sub']
     subreddit = reddit.subreddit(sub)
     while True:        
@@ -75,28 +91,32 @@ def georgeSubListener():
                 georgeThreadCommentsListener(submission.id)
 
 def georgeThreadCommentsListener(submissionID):
+    sub = config['sub']
     subreddit = reddit.subreddit(sub)
     pattern1 = r"\b(.|\n)*(g|G)eorge (a|A)dd (.)*\b" 
     
     for comment in subreddit.stream.comments():
         if(comment.submission.id != submissionID):
             continue
-        match1 = re.search(pattern1, comment.body)
-        commentRequest = comment.body.lower()
-        commentTemp = commentRequest.replace("\n\n", " ")
-        comment_token = commentTemp.split(" ")
+        replied_to = open("commented.txt").read().splitlines()
+
+        if comment.id not in replied_to:
+            match1 = re.search(pattern1, comment.body)
+            commentRequest = comment.body.lower()
+            commentTemp = commentRequest.replace("\n\n", " ")
+            comment_token = commentTemp.split(" ")
             
-        if(match1):
-            memeArray = comment_token[comment_token.index("george") + 2:]
-            memeName = " ".join(memeArray)
+            if(match1):
+                memeArray = comment_token[comment_token.index("george") + 2:]
+                memeName = " ".join(memeArray)
             
-            try:
-                results = imageSearch(memeName)
-                if(len(results) != 0):
-                    AddReply(results, comment)                                           
-                time.sleep(10)                    
-            except:
-                return []       
+                try:
+                    results = imageSearch(memeName)
+                    if(len(results) != 0):
+                        AddReply(results, comment)                                           
+                    time.sleep(10)                    
+                except:
+                    return []       
 
 
 def main():    

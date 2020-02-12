@@ -1,4 +1,4 @@
-import praw, re, time, pytz, yaml, threading, requests, base64, logging, json
+import praw, yaml, threading, requests, logging, json
 from datetime import date
 
 today = date.today()

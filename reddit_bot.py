@@ -1,4 +1,4 @@
-import praw, re, yaml, threading, requests, logging, json
+import praw, re, time, pytz, yaml, threading, requests, logging, json, base64
 from datetime import date
 
 today = date.today()
@@ -25,11 +25,11 @@ reddit = praw.Reddit(client_id=config['id'], client_secret=config['secret'],
                      username=config['username'])
 
 def imageSearch(memeName):
-    result = giphySearch(memeName,"stickers")
+    result = giphySearch(memeName,"gifs")        
     if(len(result) == 0):
-        result = giphySearch(memeName,"gifs")
+        result = imgurSearch(memeName)
         if(len(result) == 0):
-            result = imgurSearch(memeName)
+         result = giphySearch(memeName,"stickers")           
     return result
        
 

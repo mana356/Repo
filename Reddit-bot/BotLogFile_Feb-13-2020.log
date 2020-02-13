@@ -1,0 +1,436 @@
+2020-02-13 00:47:08,867 George is listening now!
+2020-02-13 00:47:08,868 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:47:08,868 Data: None
+2020-02-13 00:47:08,868 Params: {'before': None, 'limit': 100, 'raw_json': 1}
+2020-02-13 00:47:08,869 Starting new HTTPS connection (1): www.reddit.com:443
+2020-02-13 00:47:10,174 https://www.reddit.com:443 "POST /api/v1/access_token HTTP/1.1" 200 118
+2020-02-13 00:47:10,269 Starting new HTTPS connection (1): oauth.reddit.com:443
+2020-02-13 00:47:12,168 https://oauth.reddit.com:443 "GET /r/test/new?limit=100&raw_json=1 HTTP/1.1" 200 54804
+2020-02-13 00:47:12,550 Response: 200 (54804 bytes)
+2020-02-13 00:47:12,617 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 00:47:12,617 Data: None
+2020-02-13 00:47:12,617 Params: {'before': None, 'limit': 100, 'raw_json': 1}
+2020-02-13 00:47:12,617 Sleeping: 0.22 seconds prior to call
+2020-02-13 00:47:13,809 https://oauth.reddit.com:443 "GET /r/test/comments/?limit=100&raw_json=1 HTTP/1.1" 200 18629
+2020-02-13 00:47:13,814 Response: 200 (18629 bytes)
+2020-02-13 00:47:13,902 giphy search started for type: stickers and text: alabama
+2020-02-13 00:47:13,902 https://api.giphy.com/v1/stickers/search?api_key=vNtiE6s0fhNVBdiITvE9ycDMQkyY4F6q&limit=1&q=alabama
+2020-02-13 00:47:13,902 Starting new HTTPS connection (1): api.giphy.com:443
+2020-02-13 00:47:14,879 https://api.giphy.com:443 "GET /v1/stickers/search?api_key=vNtiE6s0fhNVBdiITvE9ycDMQkyY4F6q&limit=1&q=alabama HTTP/1.1" 200 1317
+2020-02-13 00:47:14,880 New Reply: {"title": "alabama football roll tide Sticker by The University of Alabama", "url": "https://giphy.com/stickers/ua-university-of-alabama-the-LWpvrL9QHkPE5BCNVS"}
+2020-02-13 00:47:14,880 Fetching: POST https://oauth.reddit.com/api/comment/
+2020-02-13 00:47:14,880 Data: [('api_type', 'json'), ('text', '[alabama football roll tide Sticker by The University of Alabama](https://giphy.com/stickers/ua-university-of-alabama-the-LWpvrL9QHkPE5BCNVS)\n\n  '), ('thing_id', 't1_fheeovx')]
+2020-02-13 00:47:14,880 Params: {'raw_json': 1}
+2020-02-13 00:47:15,770 https://oauth.reddit.com:443 "POST /api/comment/?raw_json=1 HTTP/1.1" 200 875
+2020-02-13 00:47:15,770 Response: 200 (875 bytes)
+2020-02-13 00:47:15,775 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:47:15,775 Data: None
+2020-02-13 00:47:15,775 Params: {'before': 't3_f2vjky', 'limit': 100, 'raw_json': 1}
+2020-02-13 00:47:15,775 Sleeping: 0.27 seconds prior to call
+2020-02-13 00:47:16,381 https://oauth.reddit.com:443 "GET /r/test/new?before=t3_f2vjky&limit=100&raw_json=1 HTTP/1.1" 200 104
+2020-02-13 00:47:16,381 Response: 200 (104 bytes)
+2020-02-13 00:47:17,380 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:47:17,380 Data: None
+2020-02-13 00:47:17,380 Params: {'before': None, 'limit': 99, 'raw_json': 1}
+2020-02-13 00:47:18,594 https://oauth.reddit.com:443 "GET /r/test/new?limit=99&raw_json=1 HTTP/1.1" 200 54327
+2020-02-13 00:47:18,780 Response: 200 (54327 bytes)
+2020-02-13 00:47:20,861 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:47:20,862 Data: None
+2020-02-13 00:47:20,862 Params: {'before': None, 'limit': 98, 'raw_json': 1}
+2020-02-13 00:47:22,051 https://oauth.reddit.com:443 "GET /r/test/new?limit=98&raw_json=1 HTTP/1.1" 200 53077
+2020-02-13 00:47:22,152 Response: 200 (53077 bytes)
+2020-02-13 00:47:26,133 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:47:26,133 Data: None
+2020-02-13 00:47:26,134 Params: {'before': None, 'limit': 97, 'raw_json': 1}
+2020-02-13 00:47:27,401 https://oauth.reddit.com:443 "GET /r/test/new?limit=97&raw_json=1 HTTP/1.1" 200 52931
+2020-02-13 00:47:27,490 Response: 200 (52931 bytes)
+2020-02-13 00:47:35,750 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:47:35,751 Data: None
+2020-02-13 00:47:35,751 Params: {'before': None, 'limit': 96, 'raw_json': 1}
+2020-02-13 00:47:36,857 https://oauth.reddit.com:443 "GET /r/test/new?limit=96&raw_json=1 HTTP/1.1" 200 52442
+2020-02-13 00:47:36,885 Response: 200 (52442 bytes)
+2020-02-13 00:47:53,204 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:47:53,204 Data: None
+2020-02-13 00:47:53,204 Params: {'before': None, 'limit': 95, 'raw_json': 1}
+2020-02-13 00:47:54,447 https://oauth.reddit.com:443 "GET /r/test/new?limit=95&raw_json=1 HTTP/1.1" 200 52348
+2020-02-13 00:47:54,529 Response: 200 (52348 bytes)
+2020-02-13 00:48:10,994 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:48:10,995 Data: None
+2020-02-13 00:48:10,996 Params: {'before': None, 'limit': 94, 'raw_json': 1}
+2020-02-13 00:48:12,076 https://oauth.reddit.com:443 "GET /r/test/new?limit=94&raw_json=1 HTTP/1.1" 200 52248
+2020-02-13 00:48:12,167 Response: 200 (52248 bytes)
+2020-02-13 00:48:28,604 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:48:28,604 Data: None
+2020-02-13 00:48:28,608 Params: {'before': None, 'limit': 93, 'raw_json': 1}
+2020-02-13 00:48:30,126 https://oauth.reddit.com:443 "GET /r/test/new?limit=93&raw_json=1 HTTP/1.1" 200 51843
+2020-02-13 00:48:30,489 Response: 200 (51843 bytes)
+2020-02-13 00:48:46,286 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:48:46,287 Data: None
+2020-02-13 00:48:46,287 Params: {'before': None, 'limit': 92, 'raw_json': 1}
+2020-02-13 00:48:47,308 https://oauth.reddit.com:443 "GET /r/test/new?limit=92&raw_json=1 HTTP/1.1" 200 51355
+2020-02-13 00:48:47,411 Response: 200 (51355 bytes)
+2020-02-13 00:49:03,685 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:49:03,685 Data: None
+2020-02-13 00:49:03,685 Params: {'before': None, 'limit': 91, 'raw_json': 1}
+2020-02-13 00:49:05,127 https://oauth.reddit.com:443 "GET /r/test/new?limit=91&raw_json=1 HTTP/1.1" 200 51162
+2020-02-13 00:49:05,190 Response: 200 (51162 bytes)
+2020-02-13 00:49:21,540 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:49:21,541 Data: None
+2020-02-13 00:49:21,541 Params: {'before': None, 'limit': 90, 'raw_json': 1}
+2020-02-13 00:49:23,328 https://oauth.reddit.com:443 "GET /r/test/new?limit=90&raw_json=1 HTTP/1.1" 200 51004
+2020-02-13 00:49:23,331 Response: 200 (51004 bytes)
+2020-02-13 00:49:39,083 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:49:39,083 Data: None
+2020-02-13 00:49:39,083 Params: {'before': None, 'limit': 89, 'raw_json': 1}
+2020-02-13 00:49:40,250 https://oauth.reddit.com:443 "GET /r/test/new?limit=89&raw_json=1 HTTP/1.1" 200 50417
+2020-02-13 00:49:40,334 Response: 200 (50417 bytes)
+2020-02-13 00:49:56,493 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:49:56,494 Data: None
+2020-02-13 00:49:56,495 Params: {'before': None, 'limit': 88, 'raw_json': 1}
+2020-02-13 00:49:59,397 https://oauth.reddit.com:443 "GET /r/test/new?limit=88&raw_json=1 HTTP/1.1" 200 49679
+2020-02-13 00:49:59,779 Response: 200 (49679 bytes)
+2020-02-13 00:50:15,698 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:50:15,699 Data: None
+2020-02-13 00:50:15,699 Params: {'before': None, 'limit': 87, 'raw_json': 1}
+2020-02-13 00:50:16,998 https://oauth.reddit.com:443 "GET /r/test/new?limit=87&raw_json=1 HTTP/1.1" 200 49589
+2020-02-13 00:50:17,743 Response: 200 (49589 bytes)
+2020-02-13 00:50:34,269 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:50:34,269 Data: None
+2020-02-13 00:50:34,269 Params: {'before': None, 'limit': 86, 'raw_json': 1}
+2020-02-13 00:50:35,439 https://oauth.reddit.com:443 "GET /r/test/new?limit=86&raw_json=1 HTTP/1.1" 200 49356
+2020-02-13 00:50:35,633 Response: 200 (49356 bytes)
+2020-02-13 00:50:52,056 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:50:52,056 Data: None
+2020-02-13 00:50:52,056 Params: {'before': None, 'limit': 85, 'raw_json': 1}
+2020-02-13 00:50:53,435 https://oauth.reddit.com:443 "GET /r/test/new?limit=85&raw_json=1 HTTP/1.1" 200 49178
+2020-02-13 00:50:53,450 Response: 200 (49178 bytes)
+2020-02-13 00:51:09,636 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:51:09,637 Data: None
+2020-02-13 00:51:09,637 Params: {'before': None, 'limit': 84, 'raw_json': 1}
+2020-02-13 00:51:10,713 https://oauth.reddit.com:443 "GET /r/test/new?limit=84&raw_json=1 HTTP/1.1" 200 48610
+2020-02-13 00:51:10,894 Response: 200 (48610 bytes)
+2020-02-13 00:51:27,303 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:51:27,304 Data: None
+2020-02-13 00:51:27,305 Params: {'before': None, 'limit': 83, 'raw_json': 1}
+2020-02-13 00:51:28,387 https://oauth.reddit.com:443 "GET /r/test/new?limit=83&raw_json=1 HTTP/1.1" 200 48016
+2020-02-13 00:51:28,566 Response: 200 (48016 bytes)
+2020-02-13 00:51:44,251 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:51:44,252 Data: None
+2020-02-13 00:51:44,252 Params: {'before': None, 'limit': 82, 'raw_json': 1}
+2020-02-13 00:51:45,756 https://oauth.reddit.com:443 "GET /r/test/new?limit=82&raw_json=1 HTTP/1.1" 200 47392
+2020-02-13 00:51:45,936 Response: 200 (47392 bytes)
+2020-02-13 00:52:01,803 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:52:01,804 Data: None
+2020-02-13 00:52:01,804 Params: {'before': None, 'limit': 81, 'raw_json': 1}
+2020-02-13 00:52:03,011 https://oauth.reddit.com:443 "GET /r/test/new?limit=81&raw_json=1 HTTP/1.1" 200 47251
+2020-02-13 00:52:03,205 Response: 200 (47251 bytes)
+2020-02-13 00:52:19,462 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:52:19,463 Data: None
+2020-02-13 00:52:19,463 Params: {'before': None, 'limit': 80, 'raw_json': 1}
+2020-02-13 00:52:21,102 https://oauth.reddit.com:443 "GET /r/test/new?limit=80&raw_json=1 HTTP/1.1" 200 46775
+2020-02-13 00:52:21,104 Response: 200 (46775 bytes)
+2020-02-13 00:52:37,418 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:52:37,419 Data: None
+2020-02-13 00:52:37,420 Params: {'before': None, 'limit': 79, 'raw_json': 1}
+2020-02-13 00:52:38,422 https://oauth.reddit.com:443 "GET /r/test/new?limit=79&raw_json=1 HTTP/1.1" 200 46620
+2020-02-13 00:52:38,626 Response: 200 (46620 bytes)
+2020-02-13 00:52:54,531 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:52:54,531 Data: None
+2020-02-13 00:52:54,531 Params: {'before': None, 'limit': 78, 'raw_json': 1}
+2020-02-13 00:52:55,835 https://oauth.reddit.com:443 "GET /r/test/new?limit=78&raw_json=1 HTTP/1.1" 200 46278
+2020-02-13 00:52:56,013 Response: 200 (46278 bytes)
+2020-02-13 00:53:12,416 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:53:12,416 Data: None
+2020-02-13 00:53:12,417 Params: {'before': None, 'limit': 77, 'raw_json': 1}
+2020-02-13 00:53:13,654 https://oauth.reddit.com:443 "GET /r/test/new?limit=77&raw_json=1 HTTP/1.1" 200 45909
+2020-02-13 00:53:13,851 Response: 200 (45909 bytes)
+2020-02-13 00:53:29,484 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:53:29,484 Data: None
+2020-02-13 00:53:29,484 Params: {'before': None, 'limit': 76, 'raw_json': 1}
+2020-02-13 00:53:32,366 https://oauth.reddit.com:443 "GET /r/test/new?limit=76&raw_json=1 HTTP/1.1" 200 45457
+2020-02-13 00:53:32,381 Response: 200 (45457 bytes)
+2020-02-13 00:53:48,519 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:53:48,519 Data: None
+2020-02-13 00:53:48,520 Params: {'before': None, 'limit': 75, 'raw_json': 1}
+2020-02-13 00:53:49,658 https://oauth.reddit.com:443 "GET /r/test/new?limit=75&raw_json=1 HTTP/1.1" 200 45228
+2020-02-13 00:53:50,847 Response: 200 (45228 bytes)
+2020-02-13 00:54:06,936 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:54:06,936 Data: None
+2020-02-13 00:54:06,937 Params: {'before': None, 'limit': 74, 'raw_json': 1}
+2020-02-13 00:54:08,131 https://oauth.reddit.com:443 "GET /r/test/new?limit=74&raw_json=1 HTTP/1.1" 200 45005
+2020-02-13 00:54:08,311 Response: 200 (45005 bytes)
+2020-02-13 00:54:24,328 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:54:24,329 Data: None
+2020-02-13 00:54:24,329 Params: {'before': None, 'limit': 73, 'raw_json': 1}
+2020-02-13 00:54:27,452 https://oauth.reddit.com:443 "GET /r/test/new?limit=73&raw_json=1 HTTP/1.1" 200 44599
+2020-02-13 00:54:27,793 Response: 200 (44599 bytes)
+2020-02-13 00:54:44,120 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:54:44,120 Data: None
+2020-02-13 00:54:44,121 Params: {'before': None, 'limit': 72, 'raw_json': 1}
+2020-02-13 00:54:45,306 https://oauth.reddit.com:443 "GET /r/test/new?limit=72&raw_json=1 HTTP/1.1" 200 44185
+2020-02-13 00:54:46,496 Response: 200 (44185 bytes)
+2020-02-13 00:55:02,913 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:55:02,914 Data: None
+2020-02-13 00:55:02,914 Params: {'before': None, 'limit': 71, 'raw_json': 1}
+2020-02-13 00:55:03,846 https://oauth.reddit.com:443 "GET /r/test/new?limit=71&raw_json=1 HTTP/1.1" 200 43972
+2020-02-13 00:55:04,604 Response: 200 (43972 bytes)
+2020-02-13 00:55:20,447 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:55:20,447 Data: None
+2020-02-13 00:55:20,447 Params: {'before': None, 'limit': 100, 'raw_json': 1}
+2020-02-13 00:55:21,641 https://oauth.reddit.com:443 "GET /r/test/new?limit=100&raw_json=1 HTTP/1.1" 200 54813
+2020-02-13 00:55:22,171 Response: 200 (54813 bytes)
+2020-02-13 00:55:37,907 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:55:37,907 Data: None
+2020-02-13 00:55:37,908 Params: {'before': None, 'limit': 99, 'raw_json': 1}
+2020-02-13 00:55:39,266 https://oauth.reddit.com:443 "GET /r/test/new?limit=99&raw_json=1 HTTP/1.1" 200 54353
+2020-02-13 00:55:39,705 Response: 200 (54353 bytes)
+2020-02-13 00:55:56,180 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:55:56,181 Data: None
+2020-02-13 00:55:56,181 Params: {'before': None, 'limit': 98, 'raw_json': 1}
+2020-02-13 00:55:57,336 https://oauth.reddit.com:443 "GET /r/test/new?limit=98&raw_json=1 HTTP/1.1" 200 53069
+2020-02-13 00:55:57,762 Response: 200 (53069 bytes)
+2020-02-13 00:56:13,909 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:56:13,909 Data: None
+2020-02-13 00:56:13,909 Params: {'before': None, 'limit': 97, 'raw_json': 1}
+2020-02-13 00:56:15,517 https://oauth.reddit.com:443 "GET /r/test/new?limit=97&raw_json=1 HTTP/1.1" 200 52933
+2020-02-13 00:56:15,903 Response: 200 (52933 bytes)
+2020-02-13 00:56:31,834 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:56:31,834 Data: None
+2020-02-13 00:56:31,834 Params: {'before': None, 'limit': 96, 'raw_json': 1}
+2020-02-13 00:56:33,079 https://oauth.reddit.com:443 "GET /r/test/new?limit=96&raw_json=1 HTTP/1.1" 200 52464
+2020-02-13 00:56:33,437 Response: 200 (52464 bytes)
+2020-02-13 00:56:49,454 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:56:49,455 Data: None
+2020-02-13 00:56:49,455 Params: {'before': None, 'limit': 95, 'raw_json': 1}
+2020-02-13 00:56:51,131 https://oauth.reddit.com:443 "GET /r/test/new?limit=95&raw_json=1 HTTP/1.1" 200 52351
+2020-02-13 00:56:52,239 Response: 200 (52351 bytes)
+2020-02-13 00:57:08,270 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:57:08,270 Data: None
+2020-02-13 00:57:08,270 Params: {'before': None, 'limit': 94, 'raw_json': 1}
+2020-02-13 00:57:09,586 https://oauth.reddit.com:443 "GET /r/test/new?limit=94&raw_json=1 HTTP/1.1" 200 52255
+2020-02-13 00:57:09,967 Response: 200 (52255 bytes)
+2020-02-13 00:57:26,108 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:57:26,108 Data: None
+2020-02-13 00:57:26,108 Params: {'before': None, 'limit': 93, 'raw_json': 1}
+2020-02-13 00:57:28,583 https://oauth.reddit.com:443 "GET /r/test/new?limit=93&raw_json=1 HTTP/1.1" 200 51848
+2020-02-13 00:57:30,003 Response: 200 (51848 bytes)
+2020-02-13 00:57:45,581 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:57:45,581 Data: None
+2020-02-13 00:57:45,581 Params: {'before': None, 'limit': 92, 'raw_json': 1}
+2020-02-13 00:57:46,756 https://oauth.reddit.com:443 "GET /r/test/new?limit=92&raw_json=1 HTTP/1.1" 200 51386
+2020-02-13 00:57:47,778 Response: 200 (51386 bytes)
+2020-02-13 00:58:04,227 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:58:04,228 Data: None
+2020-02-13 00:58:04,228 Params: {'before': None, 'limit': 91, 'raw_json': 1}
+2020-02-13 00:58:05,893 https://oauth.reddit.com:443 "GET /r/test/new?limit=91&raw_json=1 HTTP/1.1" 200 51176
+2020-02-13 00:58:06,453 Response: 200 (51176 bytes)
+2020-02-13 00:58:22,529 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:58:22,530 Data: None
+2020-02-13 00:58:22,530 Params: {'before': None, 'limit': 90, 'raw_json': 1}
+2020-02-13 00:58:23,877 https://oauth.reddit.com:443 "GET /r/test/new?limit=90&raw_json=1 HTTP/1.1" 200 51007
+2020-02-13 00:58:24,411 Response: 200 (51007 bytes)
+2020-02-13 00:58:40,289 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 00:58:40,289 Data: None
+2020-02-13 00:58:40,289 Params: {'before': None, 'limit': 89, 'raw_json': 1}
+2020-02-13 00:58:41,410 https://oauth.reddit.com:443 "GET /r/test/new?limit=89&raw_json=1 HTTP/1.1" 200 50434
+2020-02-13 00:58:41,927 Response: 200 (50434 bytes)
+2020-02-13 22:30:12,284 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:30:12,284 Data: None
+2020-02-13 22:30:12,284 Params: {'before': None, 'limit': 88, 'raw_json': 1}
+2020-02-13 22:30:24,448 Retrying due to ConnectionError(ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))) status: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:30:24,448 Sleeping: 0.64 seconds prior to retry
+2020-02-13 22:30:25,090 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:30:25,090 Data: None
+2020-02-13 22:30:25,090 Params: {'before': None, 'limit': 88, 'raw_json': 1}
+2020-02-13 22:30:25,090 Starting new HTTPS connection (2): www.reddit.com:443
+2020-02-13 22:30:26,181 https://www.reddit.com:443 "POST /api/v1/access_token HTTP/1.1" 200 118
+2020-02-13 22:30:26,349 Retrying due to ConnectionError(ProtocolError('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))) status: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:30:26,353 Sleeping: 2.70 seconds prior to retry
+2020-02-13 22:30:29,055 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:30:29,055 Data: None
+2020-02-13 22:30:29,055 Params: {'before': None, 'limit': 88, 'raw_json': 1}
+2020-02-13 22:30:29,059 Starting new HTTPS connection (2): oauth.reddit.com:443
+2020-02-13 22:30:30,676 https://oauth.reddit.com:443 "GET /r/test/new?limit=88&raw_json=1 HTTP/1.1" 200 50122
+2020-02-13 22:30:31,002 Response: 200 (50122 bytes)
+2020-02-13 22:30:31,041 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:30:31,041 Data: None
+2020-02-13 22:30:31,041 Params: {'before': 't3_f3cgnc', 'limit': 100, 'raw_json': 1}
+2020-02-13 22:30:31,041 Sleeping: 0.91 seconds prior to call
+2020-02-13 22:30:32,320 https://oauth.reddit.com:443 "GET /r/test/new?before=t3_f3cgnc&limit=100&raw_json=1 HTTP/1.1" 200 104
+2020-02-13 22:30:32,320 Response: 200 (104 bytes)
+2020-02-13 22:30:33,303 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:30:33,303 Data: None
+2020-02-13 22:30:33,303 Params: {'before': None, 'limit': 87, 'raw_json': 1}
+2020-02-13 22:30:34,511 https://oauth.reddit.com:443 "GET /r/test/new?limit=87&raw_json=1 HTTP/1.1" 200 50006
+2020-02-13 22:30:34,676 Response: 200 (50006 bytes)
+2020-02-13 22:30:36,699 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:30:36,699 Data: None
+2020-02-13 22:30:36,699 Params: {'before': None, 'limit': 86, 'raw_json': 1}
+2020-02-13 22:30:37,736 https://oauth.reddit.com:443 "GET /r/test/new?limit=86&raw_json=1 HTTP/1.1" 200 49634
+2020-02-13 22:30:37,848 Response: 200 (49634 bytes)
+2020-02-13 22:30:41,946 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:30:41,946 Data: None
+2020-02-13 22:30:41,946 Params: {'before': None, 'limit': 85, 'raw_json': 1}
+2020-02-13 22:30:43,083 https://oauth.reddit.com:443 "GET /r/test/new?limit=85&raw_json=1 HTTP/1.1" 200 49184
+2020-02-13 22:30:43,177 Response: 200 (49184 bytes)
+2020-02-13 22:30:51,092 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:30:51,092 Data: None
+2020-02-13 22:30:51,092 Params: {'before': None, 'limit': 84, 'raw_json': 1}
+2020-02-13 22:30:52,120 https://oauth.reddit.com:443 "GET /r/test/new?limit=84&raw_json=1 HTTP/1.1" 200 49009
+2020-02-13 22:30:52,210 Response: 200 (49009 bytes)
+2020-02-13 22:31:08,700 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:31:08,700 Data: None
+2020-02-13 22:31:08,700 Params: {'before': None, 'limit': 83, 'raw_json': 1}
+2020-02-13 22:31:09,716 https://oauth.reddit.com:443 "GET /r/test/new?limit=83&raw_json=1 HTTP/1.1" 200 48849
+2020-02-13 22:31:09,856 Response: 200 (48849 bytes)
+2020-02-13 22:31:25,663 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:31:25,663 Data: None
+2020-02-13 22:31:25,663 Params: {'before': None, 'limit': 82, 'raw_json': 1}
+2020-02-13 22:31:26,710 https://oauth.reddit.com:443 "GET /r/test/new?limit=82&raw_json=1 HTTP/1.1" 200 47948
+2020-02-13 22:31:26,804 Response: 200 (47948 bytes)
+2020-02-13 22:31:42,587 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:31:42,587 Data: None
+2020-02-13 22:31:42,587 Params: {'before': None, 'limit': 81, 'raw_json': 1}
+2020-02-13 22:31:43,747 https://oauth.reddit.com:443 "GET /r/test/new?limit=81&raw_json=1 HTTP/1.1" 200 47844
+2020-02-13 22:31:43,841 Response: 200 (47844 bytes)
+2020-02-13 22:32:00,126 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:32:00,127 Data: None
+2020-02-13 22:32:00,127 Params: {'before': None, 'limit': 80, 'raw_json': 1}
+2020-02-13 22:32:01,228 https://oauth.reddit.com:443 "GET /r/test/new?limit=80&raw_json=1 HTTP/1.1" 200 43031
+2020-02-13 22:32:01,235 Response: 200 (43031 bytes)
+2020-02-13 22:32:16,892 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:32:16,892 Data: None
+2020-02-13 22:32:16,892 Params: {'before': None, 'limit': 79, 'raw_json': 1}
+2020-02-13 22:32:17,980 https://oauth.reddit.com:443 "GET /r/test/new?limit=79&raw_json=1 HTTP/1.1" 200 42926
+2020-02-13 22:32:17,988 Response: 200 (42926 bytes)
+2020-02-13 22:32:33,936 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:32:33,936 Data: None
+2020-02-13 22:32:33,936 Params: {'before': None, 'limit': 78, 'raw_json': 1}
+2020-02-13 22:32:35,142 https://oauth.reddit.com:443 "GET /r/test/new?limit=78&raw_json=1 HTTP/1.1" 200 42830
+2020-02-13 22:32:35,154 Response: 200 (42830 bytes)
+2020-02-13 22:32:51,301 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:32:51,301 Data: None
+2020-02-13 22:32:51,301 Params: {'before': None, 'limit': 77, 'raw_json': 1}
+2020-02-13 22:32:52,530 https://oauth.reddit.com:443 "GET /r/test/new?limit=77&raw_json=1 HTTP/1.1" 200 42674
+2020-02-13 22:32:52,534 Response: 200 (42674 bytes)
+2020-02-13 22:33:08,777 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:33:08,777 Data: None
+2020-02-13 22:33:08,778 Params: {'before': None, 'limit': 76, 'raw_json': 1}
+2020-02-13 22:33:09,599 https://oauth.reddit.com:443 "GET /r/test/new?limit=76&raw_json=1 HTTP/1.1" 200 41813
+2020-02-13 22:33:09,695 Response: 200 (41813 bytes)
+2020-02-13 22:33:25,574 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:33:25,575 Data: None
+2020-02-13 22:33:25,576 Params: {'before': None, 'limit': 75, 'raw_json': 1}
+2020-02-13 22:33:26,570 https://oauth.reddit.com:443 "GET /r/test/new?limit=75&raw_json=1 HTTP/1.1" 200 41338
+2020-02-13 22:33:26,576 Response: 200 (41338 bytes)
+2020-02-13 22:33:42,208 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:33:42,208 Data: None
+2020-02-13 22:33:42,208 Params: {'before': None, 'limit': 74, 'raw_json': 1}
+2020-02-13 22:33:43,292 https://oauth.reddit.com:443 "GET /r/test/new?limit=74&raw_json=1 HTTP/1.1" 200 40348
+2020-02-13 22:33:43,303 Response: 200 (40348 bytes)
+2020-02-13 22:33:59,477 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:33:59,477 Data: None
+2020-02-13 22:33:59,477 Params: {'before': None, 'limit': 73, 'raw_json': 1}
+2020-02-13 22:34:00,546 https://oauth.reddit.com:443 "GET /r/test/new?limit=73&raw_json=1 HTTP/1.1" 200 39883
+2020-02-13 22:34:00,552 Response: 200 (39883 bytes)
+2020-02-13 22:34:16,400 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:34:16,400 Data: None
+2020-02-13 22:34:16,400 Params: {'before': None, 'limit': 72, 'raw_json': 1}
+2020-02-13 22:34:17,479 https://oauth.reddit.com:443 "GET /r/test/new?limit=72&raw_json=1 HTTP/1.1" 200 39454
+2020-02-13 22:34:17,485 Response: 200 (39454 bytes)
+2020-02-13 22:34:33,297 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:34:33,297 Data: None
+2020-02-13 22:34:33,297 Params: {'before': None, 'limit': 71, 'raw_json': 1}
+2020-02-13 22:34:34,370 https://oauth.reddit.com:443 "GET /r/test/new?limit=71&raw_json=1 HTTP/1.1" 200 39261
+2020-02-13 22:34:34,377 Response: 200 (39261 bytes)
+2020-02-13 22:34:50,862 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:34:50,862 Data: None
+2020-02-13 22:34:50,863 Params: {'before': None, 'limit': 100, 'raw_json': 1}
+2020-02-13 22:34:52,115 https://oauth.reddit.com:443 "GET /r/test/new?limit=100&raw_json=1 HTTP/1.1" 200 54152
+2020-02-13 22:34:52,217 Response: 200 (54152 bytes)
+2020-02-13 22:35:08,285 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:35:08,285 Data: None
+2020-02-13 22:35:08,285 Params: {'before': None, 'limit': 99, 'raw_json': 1}
+2020-02-13 22:35:09,661 https://oauth.reddit.com:443 "GET /r/test/new?limit=99&raw_json=1 HTTP/1.1" 200 53938
+2020-02-13 22:35:09,754 Response: 200 (53938 bytes)
+2020-02-13 22:35:25,818 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:35:25,818 Data: None
+2020-02-13 22:35:25,819 Params: {'before': None, 'limit': 98, 'raw_json': 1}
+2020-02-13 22:35:27,066 https://oauth.reddit.com:443 "GET /r/test/new?limit=98&raw_json=1 HTTP/1.1" 200 53447
+2020-02-13 22:35:27,152 Response: 200 (53447 bytes)
+2020-02-13 22:35:42,858 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:35:42,858 Data: None
+2020-02-13 22:35:42,859 Params: {'before': None, 'limit': 97, 'raw_json': 1}
+2020-02-13 22:35:44,179 https://oauth.reddit.com:443 "GET /r/test/new?limit=97&raw_json=1 HTTP/1.1" 200 53130
+2020-02-13 22:35:44,310 Response: 200 (53130 bytes)
+2020-02-13 22:36:00,397 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:36:00,397 Data: None
+2020-02-13 22:36:00,397 Params: {'before': None, 'limit': 96, 'raw_json': 1}
+2020-02-13 22:36:01,582 https://oauth.reddit.com:443 "GET /r/test/new?limit=96&raw_json=1 HTTP/1.1" 200 52562
+2020-02-13 22:36:01,685 Response: 200 (52562 bytes)
+2020-02-13 22:36:17,409 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:36:17,410 Data: None
+2020-02-13 22:36:17,410 Params: {'before': None, 'limit': 95, 'raw_json': 1}
+2020-02-13 22:36:18,642 https://oauth.reddit.com:443 "GET /r/test/new?limit=95&raw_json=1 HTTP/1.1" 200 52007
+2020-02-13 22:36:18,735 Response: 200 (52007 bytes)
+2020-02-13 22:36:34,447 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:36:34,447 Data: None
+2020-02-13 22:36:34,447 Params: {'before': None, 'limit': 94, 'raw_json': 1}
+2020-02-13 22:36:35,827 https://oauth.reddit.com:443 "GET /r/test/new?limit=94&raw_json=1 HTTP/1.1" 200 51848
+2020-02-13 22:36:35,927 Response: 200 (51848 bytes)
+2020-02-13 22:36:52,026 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:36:52,027 Data: None
+2020-02-13 22:36:52,027 Params: {'before': None, 'limit': 93, 'raw_json': 1}
+2020-02-13 22:36:53,171 https://oauth.reddit.com:443 "GET /r/test/new?limit=93&raw_json=1 HTTP/1.1" 200 51407
+2020-02-13 22:36:53,267 Response: 200 (51407 bytes)
+2020-02-13 22:37:09,047 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:37:09,047 Data: None
+2020-02-13 22:37:09,047 Params: {'before': None, 'limit': 92, 'raw_json': 1}
+2020-02-13 22:37:10,317 https://oauth.reddit.com:443 "GET /r/test/new?limit=92&raw_json=1 HTTP/1.1" 200 50801
+2020-02-13 22:37:10,349 Response: 200 (50801 bytes)
+2020-02-13 22:37:10,423 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:37:10,423 Data: None
+2020-02-13 22:37:10,423 Params: {'before': 't3_f3d2dl', 'limit': 100, 'raw_json': 1}
+2020-02-13 22:37:10,423 Sleeping: 0.23 seconds prior to call
+2020-02-13 22:37:11,311 https://oauth.reddit.com:443 "GET /r/test/new?before=t3_f3d2dl&limit=100&raw_json=1 HTTP/1.1" 200 104
+2020-02-13 22:37:11,311 Response: 200 (104 bytes)
+2020-02-13 22:37:12,304 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:37:12,305 Data: None
+2020-02-13 22:37:12,305 Params: {'before': None, 'limit': 91, 'raw_json': 1}
+2020-02-13 22:37:13,491 https://oauth.reddit.com:443 "GET /r/test/new?limit=91&raw_json=1 HTTP/1.1" 200 50717
+2020-02-13 22:37:13,588 Response: 200 (50717 bytes)
+2020-02-13 22:37:15,684 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:37:15,684 Data: None
+2020-02-13 22:37:15,684 Params: {'before': None, 'limit': 90, 'raw_json': 1}
+2020-02-13 22:37:16,765 https://oauth.reddit.com:443 "GET /r/test/new?limit=90&raw_json=1 HTTP/1.1" 200 50317
+2020-02-13 22:37:16,865 Response: 200 (50317 bytes)
+2020-02-13 22:37:20,986 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:37:20,986 Data: None
+2020-02-13 22:37:20,986 Params: {'before': None, 'limit': 89, 'raw_json': 1}
+2020-02-13 22:37:22,112 https://oauth.reddit.com:443 "GET /r/test/new?limit=89&raw_json=1 HTTP/1.1" 200 50261
+2020-02-13 22:37:22,152 Response: 200 (50261 bytes)
+2020-02-13 22:37:30,108 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:37:30,108 Data: None
+2020-02-13 22:37:30,108 Params: {'before': None, 'limit': 88, 'raw_json': 1}
+2020-02-13 22:37:31,363 https://oauth.reddit.com:443 "GET /r/test/new?limit=88&raw_json=1 HTTP/1.1" 200 50139
+2020-02-13 22:37:31,460 Response: 200 (50139 bytes)
+2020-02-13 22:37:47,247 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:37:47,248 Data: None
+2020-02-13 22:37:47,248 Params: {'before': None, 'limit': 87, 'raw_json': 1}
+2020-02-13 22:37:48,318 https://oauth.reddit.com:443 "GET /r/test/new?limit=87&raw_json=1 HTTP/1.1" 200 49770
+2020-02-13 22:37:48,421 Response: 200 (49770 bytes)
+2020-02-13 22:38:04,977 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:38:04,977 Data: None
+2020-02-13 22:38:04,977 Params: {'before': None, 'limit': 86, 'raw_json': 1}
+2020-02-13 22:38:06,035 https://oauth.reddit.com:443 "GET /r/test/new?limit=86&raw_json=1 HTTP/1.1" 200 49320
+2020-02-13 22:38:06,131 Response: 200 (49320 bytes)
+2020-02-13 22:38:22,326 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:38:22,326 Data: None
+2020-02-13 22:38:22,326 Params: {'before': None, 'limit': 85, 'raw_json': 1}
+2020-02-13 22:38:23,404 https://oauth.reddit.com:443 "GET /r/test/new?limit=85&raw_json=1 HTTP/1.1" 200 49159
+2020-02-13 22:38:23,499 Response: 200 (49159 bytes)
+2020-02-13 22:38:39,390 Fetching: GET https://oauth.reddit.com/r/test/new
+2020-02-13 22:38:39,390 Data: None
+2020-02-13 22:38:39,390 Params: {'before': None, 'limit': 84, 'raw_json': 1}
+2020-02-13 22:38:40,630 https://oauth.reddit.com:443 "GET /r/test/new?limit=84&raw_json=1 HTTP/1.1" 200 48987
+2020-02-13 22:38:40,645 Response: 200 (48987 bytes)

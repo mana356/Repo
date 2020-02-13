@@ -1,1 +1,1 @@
-"worker: python reddit_bot.py" 
+"web:  reddit_bot.py" 

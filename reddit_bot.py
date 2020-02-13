@@ -79,10 +79,14 @@ def AddReply(results, comment):
         return []
 
 def AddEmptyReply(searchText, comment):    
-    reply = "Sorry! I could not find anything with these words ("+searchText+")\n Could you try re-phrasing?" 
+    reply = "Sorry! I could not find anything related to the words *'"+searchText+"'*\n\n Could you try rephrasing please?" 
     try:
         if comment is not None:
-            comment.reply(reply) 
+            comment.reply(reply)
+            fh = open("commented.txt","a")
+            fh.write(comment.id)
+            fh.write("\n")     
+            fh.close() 
     except:
         return []
 
@@ -122,7 +126,7 @@ def georgeThreadCommentsListener(submissionID):
                     results = imageSearch(memeName)
                     if(len(results) != 0):
                         AddReply(results, comment)     
-                    else
+                    else:
                         AddEmptyReply(memeName, comment)                                      
                     time.sleep(10)                    
                 except:

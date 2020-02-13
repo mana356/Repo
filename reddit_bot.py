@@ -71,10 +71,10 @@ def AddReply(results, comment):
     try:
         if comment is not None:
             comment.reply(reply) 
-            fh = open("commented.txt","a")
-            fh.write(comment.id)
-            fh.write("\n")     
-            fh.close()
+            # fh = open("commented.txt","a")
+            # fh.write(comment.id)
+            # fh.write("\n")     
+            # fh.close()
     except:
         return []
 
@@ -83,10 +83,10 @@ def AddEmptyReply(searchText, comment):
     try:
         if comment is not None:
             comment.reply(reply)
-            fh = open("commented.txt","a")
-            fh.write(comment.id)
-            fh.write("\n")     
-            fh.close() 
+            # fh = open("commented.txt","a")
+            # fh.write(comment.id)
+            # fh.write("\n")     
+            # fh.close() 
     except:
         return []
 
@@ -110,27 +110,27 @@ def georgeThreadCommentsListener(submissionID):
     for comment in subreddit.stream.comments():
         if(comment.submission.id != submissionID):
             continue
-        replied_to = open("commented.txt").read().splitlines()
+        # replied_to = open("commented.txt").read().splitlines()
 
-        if comment.id not in replied_to:
-            match1 = re.search(pattern1, comment.body)
-            commentRequest = comment.body.lower()
-            commentTemp = commentRequest.replace("\n\n", " ")
-            comment_token = commentTemp.split(" ")
+        # if comment.id not in replied_to:
+        match1 = re.search(pattern1, comment.body)
+        commentRequest = comment.body.lower()
+        commentTemp = commentRequest.replace("\n\n", " ")
+        comment_token = commentTemp.split(" ")
             
-            if(match1):
-                memeArray = comment_token[comment_token.index("george") + 2:]
-                memeName = " ".join(memeArray)
+        if(match1):
+            memeArray = comment_token[comment_token.index("george") + 2:]
+            memeName = " ".join(memeArray)
             
-                try:
-                    results = imageSearch(memeName)
-                    if(len(results) != 0):
-                        AddReply(results, comment)     
-                    else:
-                        AddEmptyReply(memeName, comment)                                      
-                    time.sleep(10)                    
-                except:
-                    return []       
+            try:
+                results = imageSearch(memeName)
+                if(len(results) != 0):
+                    AddReply(results, comment)     
+                else:
+                    AddEmptyReply(memeName, comment)                                      
+                time.sleep(10)                    
+            except:
+                return []       
 
 
 def main():    

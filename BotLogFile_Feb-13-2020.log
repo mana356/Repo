@@ -133,3 +133,114 @@
 2020-02-13 23:49:34,845 Params: {'before': None, 'limit': 84, 'raw_json': 1}
 2020-02-13 23:49:35,999 https://oauth.reddit.com:443 "GET /r/test/comments/?limit=84&raw_json=1 HTTP/1.1" 200 16803
 2020-02-13 23:49:36,003 Response: 200 (16803 bytes)
+2020-02-13 23:49:52,037 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 23:49:52,037 Data: None
+2020-02-13 23:49:52,037 Params: {'before': None, 'limit': 83, 'raw_json': 1}
+2020-02-13 23:49:53,160 https://oauth.reddit.com:443 "GET /r/test/comments/?limit=83&raw_json=1 HTTP/1.1" 200 16753
+2020-02-13 23:49:53,167 Response: 200 (16753 bytes)
+2020-02-13 23:50:08,834 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 23:50:08,836 Data: None
+2020-02-13 23:50:08,836 Params: {'before': None, 'limit': 82, 'raw_json': 1}
+2020-02-13 23:50:09,782 https://oauth.reddit.com:443 "GET /r/test/comments/?limit=82&raw_json=1 HTTP/1.1" 200 16699
+2020-02-13 23:50:09,787 Response: 200 (16699 bytes)
+2020-02-13 23:50:25,448 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 23:50:25,449 Data: None
+2020-02-13 23:50:25,449 Params: {'before': None, 'limit': 81, 'raw_json': 1}
+2020-02-13 23:50:26,310 https://oauth.reddit.com:443 "GET /r/test/comments/?limit=81&raw_json=1 HTTP/1.1" 200 16591
+2020-02-13 23:50:26,315 Response: 200 (16591 bytes)
+2020-02-13 23:50:42,196 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 23:50:42,197 Data: None
+2020-02-13 23:50:42,197 Params: {'before': None, 'limit': 80, 'raw_json': 1}
+2020-02-13 23:50:43,064 https://oauth.reddit.com:443 "GET /r/test/comments/?limit=80&raw_json=1 HTTP/1.1" 200 16480
+2020-02-13 23:50:43,070 Response: 200 (16480 bytes)
+2020-02-13 23:50:59,313 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 23:50:59,314 Data: None
+2020-02-13 23:50:59,314 Params: {'before': None, 'limit': 79, 'raw_json': 1}
+2020-02-13 23:51:00,164 https://oauth.reddit.com:443 "GET /r/test/comments/?limit=79&raw_json=1 HTTP/1.1" 200 16340
+2020-02-13 23:51:00,168 Response: 200 (16340 bytes)
+2020-02-13 23:51:16,592 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 23:51:16,592 Data: None
+2020-02-13 23:51:16,592 Params: {'before': None, 'limit': 78, 'raw_json': 1}
+2020-02-13 23:51:17,418 https://oauth.reddit.com:443 "GET /r/test/comments/?limit=78&raw_json=1 HTTP/1.1" 200 16069
+2020-02-13 23:51:17,424 Response: 200 (16069 bytes)
+2020-02-13 23:51:33,411 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 23:51:33,411 Data: None
+2020-02-13 23:51:33,411 Params: {'before': None, 'limit': 77, 'raw_json': 1}
+2020-02-13 23:51:34,178 https://oauth.reddit.com:443 "GET /r/test/comments/?limit=77&raw_json=1 HTTP/1.1" 200 15804
+2020-02-13 23:51:34,179 Response: 200 (15804 bytes)
+2020-02-13 23:51:50,116 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 23:51:50,116 Data: None
+2020-02-13 23:51:50,116 Params: {'before': None, 'limit': 76, 'raw_json': 1}
+2020-02-13 23:51:51,028 https://oauth.reddit.com:443 "GET /r/test/comments/?limit=76&raw_json=1 HTTP/1.1" 200 15649
+2020-02-13 23:51:51,030 Response: 200 (15649 bytes)
+2020-02-13 23:52:07,326 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 23:52:07,327 Data: None
+2020-02-13 23:52:07,327 Params: {'before': None, 'limit': 75, 'raw_json': 1}
+2020-02-13 23:52:08,409 https://oauth.reddit.com:443 "GET /r/test/comments/?limit=75&raw_json=1 HTTP/1.1" 200 15456
+2020-02-13 23:52:08,412 Response: 200 (15456 bytes)
+2020-02-13 23:52:24,017 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 23:52:24,017 Data: None
+2020-02-13 23:52:24,017 Params: {'before': None, 'limit': 74, 'raw_json': 1}
+2020-02-13 23:52:24,856 https://oauth.reddit.com:443 "GET /r/test/comments/?limit=74&raw_json=1 HTTP/1.1" 200 14855
+2020-02-13 23:52:24,872 Response: 200 (14855 bytes)
+2020-02-13 23:52:25,013 giphy search started for type: stickers and text: eric andre
+2020-02-13 23:52:25,014 https://api.giphy.com/v1/stickers/search?api_key=vNtiE6s0fhNVBdiITvE9ycDMQkyY4F6q&limit=1&q=eric andre
+2020-02-13 23:52:25,027 Starting new HTTPS connection (1): api.giphy.com:443
+2020-02-13 23:52:25,996 https://api.giphy.com:443 "GET /v1/stickers/search?api_key=vNtiE6s0fhNVBdiITvE9ycDMQkyY4F6q&limit=1&q=eric%20andre HTTP/1.1" 200 1321
+2020-02-13 23:52:25,996 New Reply: {"title": "eric andre wtf Sticker by Patrick Passaro", "url": "https://giphy.com/stickers/funny-wtf-lick-fLyqnUpVMU3YWDIPUu"}
+2020-02-13 23:52:25,996 Fetching: POST https://oauth.reddit.com/api/comment/
+2020-02-13 23:52:25,996 Data: [('api_type', 'json'), ('text', '[eric andre wtf Sticker by Patrick Passaro](https://giphy.com/stickers/funny-wtf-lick-fLyqnUpVMU3YWDIPUu)\n\n  '), ('thing_id', 't1_fhi5hs8')]
+2020-02-13 23:52:25,996 Params: {'raw_json': 1}
+2020-02-13 23:52:26,620 https://oauth.reddit.com:443 "POST /api/comment/?raw_json=1 HTTP/1.1" 200 851
+2020-02-13 23:52:26,621 Response: 200 (851 bytes)
+2020-02-13 23:52:36,640 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 23:52:36,640 Data: None
+2020-02-13 23:52:36,640 Params: {'before': 't1_fhi5hs8', 'limit': 100, 'raw_json': 1}
+2020-02-13 23:52:36,991 https://oauth.reddit.com:443 "GET /r/test/comments/?before=t1_fhi5hs8&limit=100&raw_json=1 HTTP/1.1" 200 947
+2020-02-13 23:52:36,991 Response: 200 (947 bytes)
+2020-02-13 23:52:37,039 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 23:52:37,039 Data: None
+2020-02-13 23:52:37,043 Params: {'before': 't1_fhi5irw', 'limit': 100, 'raw_json': 1}
+2020-02-13 23:52:37,043 Sleeping: 0.70 seconds prior to call
+2020-02-13 23:52:38,126 https://oauth.reddit.com:443 "GET /r/test/comments/?before=t1_fhi5irw&limit=100&raw_json=1 HTTP/1.1" 200 104
+2020-02-13 23:52:38,130 Response: 200 (104 bytes)
+2020-02-13 23:52:39,104 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 23:52:39,105 Data: None
+2020-02-13 23:52:39,105 Params: {'before': None, 'limit': 73, 'raw_json': 1}
+2020-02-13 23:52:39,931 https://oauth.reddit.com:443 "GET /r/test/comments/?limit=73&raw_json=1 HTTP/1.1" 200 14625
+2020-02-13 23:52:39,951 Response: 200 (14625 bytes)
+2020-02-13 23:52:42,358 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 23:52:42,358 Data: None
+2020-02-13 23:52:42,358 Params: {'before': None, 'limit': 72, 'raw_json': 1}
+2020-02-13 23:52:43,025 https://oauth.reddit.com:443 "GET /r/test/comments/?limit=72&raw_json=1 HTTP/1.1" 200 14271
+2020-02-13 23:52:43,039 Response: 200 (14271 bytes)
+2020-02-13 23:52:47,156 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 23:52:47,157 Data: None
+2020-02-13 23:52:47,157 Params: {'before': None, 'limit': 71, 'raw_json': 1}
+2020-02-13 23:52:48,006 https://oauth.reddit.com:443 "GET /r/test/comments/?limit=71&raw_json=1 HTTP/1.1" 200 14061
+2020-02-13 23:52:48,015 Response: 200 (14061 bytes)
+2020-02-13 23:52:55,940 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 23:52:55,941 Data: None
+2020-02-13 23:52:55,942 Params: {'before': None, 'limit': 100, 'raw_json': 1}
+2020-02-13 23:52:56,906 https://oauth.reddit.com:443 "GET /r/test/comments/?limit=100&raw_json=1 HTTP/1.1" 200 18648
+2020-02-13 23:52:56,921 Response: 200 (18648 bytes)
+2020-02-13 23:53:13,472 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 23:53:13,472 Data: None
+2020-02-13 23:53:13,472 Params: {'before': None, 'limit': 99, 'raw_json': 1}
+2020-02-13 23:53:14,622 https://oauth.reddit.com:443 "GET /r/test/comments/?limit=99&raw_json=1 HTTP/1.1" 200 18451
+2020-02-13 23:53:14,640 Response: 200 (18451 bytes)
+2020-02-13 23:53:31,346 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 23:53:31,346 Data: None
+2020-02-13 23:53:31,347 Params: {'before': None, 'limit': 98, 'raw_json': 1}
+2020-02-13 23:53:32,232 https://oauth.reddit.com:443 "GET /r/test/comments/?limit=98&raw_json=1 HTTP/1.1" 200 18224
+2020-02-13 23:53:32,247 Response: 200 (18224 bytes)
+2020-02-13 23:53:48,622 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 23:53:48,624 Data: None
+2020-02-13 23:53:48,625 Params: {'before': None, 'limit': 97, 'raw_json': 1}
+2020-02-13 23:53:49,848 https://oauth.reddit.com:443 "GET /r/test/comments/?limit=97&raw_json=1 HTTP/1.1" 200 18122
+2020-02-13 23:53:49,866 Response: 200 (18122 bytes)
+2020-02-13 23:54:06,466 Fetching: GET https://oauth.reddit.com/r/test/comments/
+2020-02-13 23:54:06,466 Data: None
+2020-02-13 23:54:06,466 Params: {'before': None, 'limit': 96, 'raw_json': 1}
+2020-02-13 23:54:07,469 https://oauth.reddit.com:443 "GET /r/test/comments/?limit=96&raw_json=1 HTTP/1.1" 200 17882
+2020-02-13 23:54:07,482 Response: 200 (17882 bytes)

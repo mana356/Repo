@@ -78,6 +78,14 @@ def AddReply(results, comment):
     except:
         return []
 
+def AddEmptyReply(searchText, comment):    
+    reply = "Sorry! I could not find anything with these words ("+searchText+")\n Could you try re-phrasing?" 
+    try:
+        if comment is not None:
+            comment.reply(reply) 
+    except:
+        return []
+
 def georgeSubListener():
     logger.info('George is listening now!')
     sub = config['sub']
@@ -113,7 +121,9 @@ def georgeThreadCommentsListener(submissionID):
                 try:
                     results = imageSearch(memeName)
                     if(len(results) != 0):
-                        AddReply(results, comment)                                           
+                        AddReply(results, comment)     
+                    else
+                        AddEmptyReply(memeName, comment)                                      
                     time.sleep(10)                    
                 except:
                     return []       

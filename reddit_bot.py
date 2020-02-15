@@ -23,47 +23,38 @@ def imageSearch(memeName):
        
 
 def imgurSearch(searchText):
-    print('imgur search started for text: '+searchText)
     imgurSearchUrl = "https://api.imgur.com/3/gallery/search/top/all/1?q=" 
     imgurAccessHeader = {"Accept": "application/json", "Content-Type": "application/json","Authorization": getConfigHeroku('ImgurAuth')}
     imgurQuery = searchText
     imgurSearchUrl = imgurSearchUrl + imgurQuery
-    print(imgurSearchUrl)
     try:
       imgurResponse = requests.get(imgurSearchUrl,headers=imgurAccessHeader)
       data = imgurResponse.json()["data"][0]
-      meme = {"title":data["title"], "url": data["link"]}
-      print("New Reply: "+json.dumps(meme))
+      meme = {"title":data["title"], "url": data["link"], "source":"Imgur"}
       return [meme]
     except:
-      print("not found on imgur: "+searchText)
       return []
 
 def giphySearch(searchText,searchType):
-    print('giphy search started for type: '+searchType+" and text: "+searchText)
     giphySearchUrl = "https://api.giphy.com/v1/"+searchType+"/search?api_key="+getConfigHeroku('GiphyAuth')+"&limit=1&q="
     giphyQuery = searchText
     giphySearchUrl = giphySearchUrl + giphyQuery
-    print(giphySearchUrl)
     try:        
         giphyResponse = requests.get(giphySearchUrl)        
         data = giphyResponse.json()["data"][0]
-        meme = {"title":data["title"], "url": data["url"]}
-        print("New Reply: "+json.dumps(meme))
+        meme = {"title":data["title"], "url": data["url"], "source":"Giphy"}
         return [meme]
     except:
-        print("not found on giphy for type: "+ searchType)
         return []
 
-def AddReply(results, comment, author):    
-    reply = "[{}]({})\n\n  ".format(results[0]["title"],results[0]["url"])    
+def AddReply(results, comment, author, searchText):    
+    reply = "[{}]({})\n\n ^(Results fetched from {})  ".format(results[0]["title"],results[0]["url"],results[0]["source"])    
     try:
         if comment is not None:
             comment.reply(reply) 
-            print('here')
             conn = psycopg2.connect(getConfigHeroku('dbConnString'))
             cur = conn.cursor()
-            sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+str(datetime.now())+"');"
+            sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on,searchtext) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+str(datetime.now())+"','"+searchText+"');"
             cur.execute(sql)
             conn.commit()
             cur.close()
@@ -76,10 +67,9 @@ def AddEmptyReply(searchText, comment, author):
     try:
         if comment is not None:
             comment.reply(reply)
-            print('here')
             conn = psycopg2.connect(getConfigHeroku('dbConnString'))
             cur = conn.cursor()
-            sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+str(datetime.now())+"');"
+            sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on,searchtext) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+str(datetime.now())+"','"+searchText+"');"
             cur.execute(sql)
             conn.commit()
             cur.close()
@@ -88,17 +78,14 @@ def AddEmptyReply(searchText, comment, author):
         print ("Error while fetching data from PostgreSQL", error)
 
 def georgeSubListener():
-    print('George is listening now!')
     sub = getConfigHeroku('sub')
     subreddit = reddit.subreddit(sub)
     while True:        
         for submission in subreddit.stream.submissions():
-            print(submission.title)
             subToReplyIn = getConfigHeroku('threadTitle')
             author = getConfigHeroku('author')
             matchsub = re.search(subToReplyIn, submission.title)
             if matchsub and submission.author == author: 
-                print("submission found!")       
                 georgeThreadCommentsListener(submission.id)
 
 def georgeThreadCommentsListener(submissionID):
@@ -113,7 +100,6 @@ def georgeThreadCommentsListener(submissionID):
             conn = psycopg2.connect(getConfigHeroku('dbConnString'))
             cur = conn.cursor()
             sql = "SELECT comment_id from tblcommentsbybot where comment_id='"+comment.id+"';"
-            print(sql)
             cur.execute(sql)
             records = cur.fetchall() 
             conn.commit()
@@ -121,24 +107,23 @@ def georgeThreadCommentsListener(submissionID):
             conn.close()
 
             if comment.id not in records:
-                print("comment found!") 
                 match1 = re.search(pattern1, comment.body)
                 commentRequest = comment.body.lower()
                 commentTemp = commentRequest.replace("\n\n", " ")
                 comment_token = commentTemp.split(" ")
                 
                 if(match1):
-                    print("match found!") 
                     memeArray = comment_token[comment_token.index("george") + 2:]
                     memeName = " ".join(memeArray)
                 
                     try:
-                        print("attempting to search:"+memeName) 
-                        results = imageSearch(memeName)
+                        if comment.author is None:
+		                    continue
+	                    results = imageSearch(memeName)
                         if(len(results) != 0):
-                            AddReply(results, comment, comment.submission.author.name)     
+                            AddReply(results, comment, comment.author.name, memeName)     
                         else:
-                            AddEmptyReply(memeName, comment, comment.submission.author.name)                                      
+                            AddEmptyReply(memeName, comment, comment.author.name)                                      
                         time.sleep(10)                    
                     except:
                         return [] 

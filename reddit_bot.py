@@ -80,7 +80,7 @@ def AddEmptyReply(searchText, comment, author):
             print('here')
             conn = psycopg2.connect(getConfigHeroku('dbConnString'))
             cur = conn.cursor()
-            sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+now.strftime("%d-%m-%Y %H:%M:%S")+"');"
+            sql = """INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+now.strftime("%d-%m-%Y %H:%M:%S")+"');"""
             print(sql)
             cur.execute(sql)
             conn.commit()
@@ -111,38 +111,41 @@ def georgeThreadCommentsListener(submissionID):
     for comment in subreddit.stream.comments():
         if(comment.submission.id != submissionID):
             continue
-        conn = psycopg2.connect(getConfigHeroku('dbConnString'))
-        cur = conn.cursor()
-        sql = "SELECT comment_id from tblcommentsbybot where comment_id='"+comment.id+"';"
-        print(sql)
-        cur.execute(sql)
-        records = cur.fetchall() 
-        conn.commit()
-        cur.close()
-        conn.close()
+        try:
+            conn = psycopg2.connect(getConfigHeroku('dbConnString'))
+            cur = conn.cursor()
+            sql = """SELECT comment_id from tblcommentsbybot where comment_id='"+comment.id+"';"""
+            print(sql)
+            cur.execute(sql)
+            records = cur.fetchall() 
+            conn.commit()
+            cur.close()
+            conn.close()
 
-        if comment.id not in records:
-            print("comment found!") 
-            match1 = re.search(pattern1, comment.body)
-            commentRequest = comment.body.lower()
-            commentTemp = commentRequest.replace("\n\n", " ")
-            comment_token = commentTemp.split(" ")
-            
-            if(match1):
-                print("match found!") 
-                memeArray = comment_token[comment_token.index("george") + 2:]
-                memeName = " ".join(memeArray)
-            
-                try:
-                    print("attempting to search:"+memeName) 
-                    results = imageSearch(memeName)
-                    if(len(results) != 0):
-                        AddReply(results, comment, comment.author)     
-                    else:
-                        AddEmptyReply(memeName, comment, comment.author)                                      
-                    time.sleep(10)                    
-                except:
-                    return []       
+            if comment.id not in records:
+                print("comment found!") 
+                match1 = re.search(pattern1, comment.body)
+                commentRequest = comment.body.lower()
+                commentTemp = commentRequest.replace("\n\n", " ")
+                comment_token = commentTemp.split(" ")
+                
+                if(match1):
+                    print("match found!") 
+                    memeArray = comment_token[comment_token.index("george") + 2:]
+                    memeName = " ".join(memeArray)
+                
+                    try:
+                        print("attempting to search:"+memeName) 
+                        results = imageSearch(memeName)
+                        if(len(results) != 0):
+                            AddReply(results, comment, comment.author)     
+                        else:
+                            AddEmptyReply(memeName, comment, comment.author)                                      
+                        time.sleep(10)                    
+                    except:
+                        return [] 
+        except (Exception, psycopg2.Error) as error :
+            print ("Error while fetching data from PostgreSQL", error)      
 
 
 def main():    

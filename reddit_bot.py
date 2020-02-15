@@ -138,9 +138,9 @@ def georgeThreadCommentsListener(submissionID):
                         print("attempting to search:"+memeName) 
                         results = imageSearch(memeName)
                         if(len(results) != 0):
-                            AddReply(results, comment, comment.author)     
+                            AddReply(results, comment, comment.submission.author.name)     
                         else:
-                            AddEmptyReply(memeName, comment, comment.author)                                      
+                            AddEmptyReply(memeName, comment, comment.submission.author.name)                                      
                         time.sleep(10)                    
                     except:
                         return [] 

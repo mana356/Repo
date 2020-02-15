@@ -60,6 +60,7 @@ def AddReply(results, comment, author):
     try:
         if comment is not None:
             comment.reply(reply) 
+            print('here')
             conn = psycopg2.connect(getConfigHeroku('dbConnString'))
             cur = conn.cursor()
             sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+now.strftime("%d-%m-%Y %H:%M:%S")+"');"
@@ -71,15 +72,20 @@ def AddReply(results, comment, author):
     except:
         return []
 
-def AddEmptyReply(searchText, comment):    
+def AddEmptyReply(searchText, comment, author):    
     reply = "Sorry! I could not find anything related to the words *'"+searchText+"'*\n\n Could you try rephrasing please?" 
     try:
         if comment is not None:
             comment.reply(reply)
-            fh = open("commented.txt","a")
-            fh.write(comment.id)
-            fh.write("\n")     
-            fh.close() 
+            print('here')
+            conn = psycopg2.connect(getConfigHeroku('dbConnString'))
+            cur = conn.cursor()
+            sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+now.strftime("%d-%m-%Y %H:%M:%S")+"');"
+            print(sql)
+            cur.execute(sql)
+            conn.commit()
+            cur.close()
+            conn.close() 
     except:
         return []
 

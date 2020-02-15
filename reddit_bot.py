@@ -6,7 +6,7 @@ def getConfigHeroku(key):
     result = os.environ.get(key,'None')
     return result
 
-reddit = praw.Reddit(client_id=getConfigHeroku('id'), client_secret=getConfigHeroku('secret'),
+reddit = praw.Reddit(client_id=getConfigHeroku('clientid'), client_secret=getConfigHeroku('secret'),
                      password=getConfigHeroku('password'), user_agent=getConfigHeroku('agent'),
                      username=getConfigHeroku('username'))
 
@@ -84,8 +84,6 @@ def georgeSubListener():
         for submission in subreddit.stream.submissions():
             print(submission.title)
             subToReplyIn = getConfigHeroku('threadTitle')
-            print(getConfigHeroku('threadTitle'))
-            print(getConfigHeroku('author'))
             author = getConfigHeroku('author')
             matchsub = re.search(subToReplyIn, submission.title)
             if matchsub and submission.author == author: 

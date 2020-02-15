@@ -1,7 +1,7 @@
 import praw, re, pytz, yaml, threading, requests, json, base64
 import os
 import psycopg2
-from time import gmtime, strftime
+from datetime import datetime
 
 
 def getConfigHeroku(key):
@@ -63,7 +63,7 @@ def AddReply(results, comment, author):
             print('here')
             conn = psycopg2.connect(getConfigHeroku('dbConnString'))
             cur = conn.cursor()
-            sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+strftime("%d-%m-%Y %H:%M:%S", gmtime()+"');"
+            sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+str(datetime.now())+"');"
             cur.execute(sql)
             conn.commit()
             cur.close()
@@ -79,7 +79,7 @@ def AddEmptyReply(searchText, comment, author):
             print('here')
             conn = psycopg2.connect(getConfigHeroku('dbConnString'))
             cur = conn.cursor()
-            sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+strftime("%d-%m-%Y %H:%M:%S", gmtime()+"');"
+            sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+str(datetime.now())+"');"
             cur.execute(sql)
             conn.commit()
             cur.close()

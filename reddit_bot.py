@@ -69,8 +69,8 @@ def AddReply(results, comment, author):
             conn.commit()
             cur.close()
             conn.close()
-    except:
-        return []
+    except (Exception, psycopg2.Error) as error :
+        print ("Error while fetching data from PostgreSQL", error)
 
 def AddEmptyReply(searchText, comment, author):    
     reply = "Sorry! I could not find anything related to the words *'"+searchText+"'*\n\n Could you try rephrasing please?" 
@@ -86,8 +86,8 @@ def AddEmptyReply(searchText, comment, author):
             conn.commit()
             cur.close()
             conn.close() 
-    except:
-        return []
+    except (Exception, psycopg2.Error) as error :
+        print ("Error while fetching data from PostgreSQL", error)
 
 def georgeSubListener():
     print('George is listening now!')

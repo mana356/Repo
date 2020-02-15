@@ -1,6 +1,8 @@
 import praw, re, time, pytz, yaml, threading, requests, json, base64
 import os
 from datetime import date
+import psycopg2
+
 
 def getConfigHeroku(key):
     result = os.environ.get(key,'None')
@@ -9,6 +11,7 @@ def getConfigHeroku(key):
 reddit = praw.Reddit(client_id=getConfigHeroku('clientid'), client_secret=getConfigHeroku('secret'),
                      password=getConfigHeroku('password'), user_agent=getConfigHeroku('agent'),
                      username=getConfigHeroku('username'))
+
 
 def imageSearch(memeName):
     result = giphySearch(memeName,"gifs")        
@@ -52,15 +55,19 @@ def giphySearch(searchText,searchType):
         print("not found on giphy for type: "+ searchType)
         return []
 
-def AddReply(results, comment):    
+def AddReply(results, comment, author):    
     reply = "[{}]({})\n\n  ".format(results[0]["title"],results[0]["url"])    
     try:
         if comment is not None:
             comment.reply(reply) 
-            fh = open("commented.txt","a")
-            fh.write(comment.id)
-            fh.write("\n")     
-            fh.close()
+            conn = psycopg2.connect(getConfigHeroku('dbConnString'))
+            cur = conn.cursor()
+            sql = """INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on) VALUES(%s,%s,%s,%s);"""
+            record_to_insert = (comment.id, author, reply, now.strftime("%d-%m-%Y %H:%M:%S"))
+            cur.execute(sql,record_to_insert)
+            conn.commit()
+            cur.close()
+            conn.close()
     except:
         return []
 
@@ -98,9 +105,16 @@ def georgeThreadCommentsListener(submissionID):
     for comment in subreddit.stream.comments():
         if(comment.submission.id != submissionID):
             continue
-        replied_to = open("commented.txt").read().splitlines()
+        conn = psycopg2.connect(getConfigHeroku('dbConnString'))
+            cur = conn.cursor()
+            sql = "SELECT comment_id from tblcommentsbybot where comment_id="+comment.id+";"
+            cur.execute(sql)
+            records = cursor.fetchall() 
+            conn.commit()
+            cur.close()
+            conn.close()
 
-        if comment.id not in replied_to:
+        if comment.id not in records:
             print("comment found!") 
             match1 = re.search(pattern1, comment.body)
             commentRequest = comment.body.lower()
@@ -116,9 +130,9 @@ def georgeThreadCommentsListener(submissionID):
                     print("attempting to search:"+memeName) 
                     results = imageSearch(memeName)
                     if(len(results) != 0):
-                        AddReply(results, comment)     
+                        AddReply(results, comment, comment.author)     
                     else:
-                        AddEmptyReply(memeName, comment)                                      
+                        AddEmptyReply(memeName, comment, comment.author)                                      
                     time.sleep(10)                    
                 except:
                     return []       

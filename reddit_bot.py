@@ -8,7 +8,7 @@ def getConfigHeroku(key):
 
 reddit = praw.Reddit(client_id=getConfigHeroku('id'), client_secret=getConfigHeroku('secret'),
                      password=getConfigHeroku('password'), user_agent=getConfigHeroku('agent'),
-                     username=getConfigHeroku('username')
+                     username=getConfigHeroku('username'))
 
 def imageSearch(memeName):
     result = giphySearch(memeName,"gifs")        

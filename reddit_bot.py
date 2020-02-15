@@ -84,6 +84,8 @@ def georgeSubListener():
         for submission in subreddit.stream.submissions():
             print(submission.title)
             subToReplyIn = getConfigHeroku('threadTitle')
+            print(getConfigHeroku('threadTitle'))
+            print(getConfigHeroku('author'))
             author = getConfigHeroku('author')
             matchsub = re.search(subToReplyIn, submission.title)
             if matchsub and submission.author == author: 

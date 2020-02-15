@@ -113,8 +113,7 @@ def georgeThreadCommentsListener():
                             if(len(results) != 0):
                                 AddReply(results, comment, comment.author.name, memeName)     
                             else:
-                                AddEmptyReply(memeName, comment, comment.author.name)                                      
-                            time.sleep(10)                    
+                                AddEmptyReply(memeName, comment, comment.author.name)       
                         except:
                             return [] 
             except (Exception, psycopg2.Error) as error :

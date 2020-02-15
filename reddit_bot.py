@@ -92,6 +92,7 @@ def georgeThreadCommentsListener():
                 sql = "SELECT comment_id from tblcommentsbybot where comment_id='"+comment.id+"';"
                 cur.execute(sql)
                 records = cur.fetchall() 
+                print(json.dumps(records))
                 conn.commit()
                 cur.close()
                 conn.close()

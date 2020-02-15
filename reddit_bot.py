@@ -64,7 +64,6 @@ def AddReply(results, comment, author):
             conn = psycopg2.connect(getConfigHeroku('dbConnString'))
             cur = conn.cursor()
             sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+strftime("%d-%m-%Y %H:%M:%S", gmtime()+"');"
-            print(sql)
             cur.execute(sql)
             conn.commit()
             cur.close()
@@ -81,7 +80,6 @@ def AddEmptyReply(searchText, comment, author):
             conn = psycopg2.connect(getConfigHeroku('dbConnString'))
             cur = conn.cursor()
             sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+strftime("%d-%m-%Y %H:%M:%S", gmtime()+"');"
-            print(sql)
             cur.execute(sql)
             conn.commit()
             cur.close()

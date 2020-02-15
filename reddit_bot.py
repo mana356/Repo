@@ -77,6 +77,8 @@ def AddEmptyReply(searchText, comment, author):
     except (Exception, psycopg2.Error) as error :
         print ("Error while fetching data from PostgreSQL", error)
 
+def()
+
 def georgeThreadCommentsListener():
     sub = getConfigHeroku('sub')
     subreddit = reddit.subreddit(sub)
@@ -91,13 +93,12 @@ def georgeThreadCommentsListener():
                 cur = conn.cursor()
                 sql = "SELECT comment_id from tblcommentsbybot where comment_id='"+comment.id+"';"
                 cur.execute(sql)
-                records = cur.fetchall() 
-                print(json.dumps(records))
+                records = cur.fetchone() 
                 conn.commit()
                 cur.close()
                 conn.close()
 
-                if str(comment.id) not in records:
+                if records is None:
                     match1 = re.search(pattern1, comment.body)
                     commentRequest = comment.body.lower()
                     commentTemp = commentRequest.replace("\n\n", " ")

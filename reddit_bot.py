@@ -97,7 +97,7 @@ def georgeThreadCommentsListener():
                 cur.close()
                 conn.close()
 
-                if comment.id not in records:
+                if str(comment.id) not in records:
                     match1 = re.search(pattern1, comment.body)
                     commentRequest = comment.body.lower()
                     commentTemp = commentRequest.replace("\n\n", " ")

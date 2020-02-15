@@ -119,7 +119,7 @@ def georgeThreadCommentsListener(submissionID):
                     try:
                         if comment.author is None:
                             continue
-	                    results = imageSearch(memeName)
+                        results = imageSearch(memeName)
                         if(len(results) != 0):
                             AddReply(results, comment, comment.author.name, memeName)     
                         else:

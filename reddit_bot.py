@@ -62,9 +62,9 @@ def AddReply(results, comment, author):
             comment.reply(reply) 
             conn = psycopg2.connect(getConfigHeroku('dbConnString'))
             cur = conn.cursor()
-            sql = """INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on) VALUES(%s,%s,%s,%s);"""
-            record_to_insert = (comment.id, author, reply, now.strftime("%d-%m-%Y %H:%M:%S"))
-            cur.execute(sql,record_to_insert)
+            sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+now.strftime("%d-%m-%Y %H:%M:%S")+"');"
+            print(sql)
+            cur.execute(sql)
             conn.commit()
             cur.close()
             conn.close()
@@ -108,6 +108,7 @@ def georgeThreadCommentsListener(submissionID):
         conn = psycopg2.connect(getConfigHeroku('dbConnString'))
         cur = conn.cursor()
         sql = "SELECT comment_id from tblcommentsbybot where comment_id='"+comment.id+"';"
+        print(sql)
         cur.execute(sql)
         records = cur.fetchall() 
         conn.commit()

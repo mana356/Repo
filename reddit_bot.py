@@ -107,7 +107,7 @@ def georgeThreadCommentsListener(submissionID):
             continue
         conn = psycopg2.connect(getConfigHeroku('dbConnString'))
         cur = conn.cursor()
-        sql = "SELECT comment_id from tblcommentsbybot where comment_id="+comment.id+";"
+        sql = "SELECT comment_id from tblcommentsbybot where comment_id='"+comment.id+"';"
         cur.execute(sql)
         records = cursor.fetchall() 
         conn.commit()

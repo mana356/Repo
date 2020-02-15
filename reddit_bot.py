@@ -120,7 +120,8 @@ def georgeThreadCommentsListener():
                             return [] 
             except (Exception, psycopg2.Error) as error :
                 print ("Error while fetching data from PostgreSQL", error)      
-
+            except:
+                print("Unexpected error:", sys.exc_info()[0])
 
 def main():    
     thread = {"georgeThreadCommentsListener": threading.Thread(target = georgeThreadCommentsListener)}

@@ -7,4 +7,8 @@ Currently searches Giphy Stickers, Giphy Gifs and Imgur Top Search Results.
 
 George add *text*
 
+### Deployment
+
+This bot is configured to be deployed on Heroku
+
 

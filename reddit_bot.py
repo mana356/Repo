@@ -106,13 +106,13 @@ def georgeThreadCommentsListener(submissionID):
         if(comment.submission.id != submissionID):
             continue
         conn = psycopg2.connect(getConfigHeroku('dbConnString'))
-            cur = conn.cursor()
-            sql = "SELECT comment_id from tblcommentsbybot where comment_id="+comment.id+";"
-            cur.execute(sql)
-            records = cursor.fetchall() 
-            conn.commit()
-            cur.close()
-            conn.close()
+        cur = conn.cursor()
+        sql = "SELECT comment_id from tblcommentsbybot where comment_id="+comment.id+";"
+        cur.execute(sql)
+        records = cursor.fetchall() 
+        conn.commit()
+        cur.close()
+        conn.close()
 
         if comment.id not in records:
             print("comment found!") 

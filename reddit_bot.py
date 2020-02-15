@@ -77,60 +77,52 @@ def AddEmptyReply(searchText, comment, author):
     except (Exception, psycopg2.Error) as error :
         print ("Error while fetching data from PostgreSQL", error)
 
-def georgeSubListener():
-    sub = getConfigHeroku('sub')
-    subreddit = reddit.subreddit(sub)
-    while True:        
-        for submission in subreddit.stream.submissions():
-            subToReplyIn = getConfigHeroku('threadTitle')
-            author = getConfigHeroku('author')
-            matchsub = re.search(subToReplyIn, submission.title)
-            if matchsub and submission.author == author: 
-                georgeThreadCommentsListener(submission.id)
-
-def georgeThreadCommentsListener(submissionID):
+def georgeThreadCommentsListener():
     sub = getConfigHeroku('sub')
     subreddit = reddit.subreddit(sub)
     pattern1 = r"\b(.|\n)*(g|G)eorge (a|A)dd (.)*\b" 
     
-    for comment in subreddit.stream.comments():
-        if(comment.submission.id != submissionID):
-            continue
-        try:
-            conn = psycopg2.connect(getConfigHeroku('dbConnString'))
-            cur = conn.cursor()
-            sql = "SELECT comment_id from tblcommentsbybot where comment_id='"+comment.id+"';"
-            cur.execute(sql)
-            records = cur.fetchall() 
-            conn.commit()
-            cur.close()
-            conn.close()
+    while True:
+        for comment in subreddit.stream.comments():
+            if(comment.submission.author.name != getConfigHeroku('author')):
+                continue
+            try:
+                conn = psycopg2.connect(getConfigHeroku('dbConnString'))
+                cur = conn.cursor()
+                sql = "SELECT comment_id from tblcommentsbybot where comment_id='"+comment.id+"';"
+                cur.execute(sql)
+                records = cur.fetchall() 
+                conn.commit()
+                cur.close()
+                conn.close()
 
-            if comment.id not in records:
-                match1 = re.search(pattern1, comment.body)
-                commentRequest = comment.body.lower()
-                commentTemp = commentRequest.replace("\n\n", " ")
-                comment_token = commentTemp.split(" ")
-                
-                if(match1):
-                    memeArray = comment_token[comment_token.index("george") + 2:]
-                    memeName = " ".join(memeArray)
-                
-                    try:
-                        results = imageSearch(memeName)
-                        if(len(results) != 0):
-                            AddReply(results, comment, comment.author.name, memeName)     
-                        else:
-                            AddEmptyReply(memeName, comment, comment.author.name)                                      
-                        time.sleep(10)                    
-                    except:
-                        return [] 
-        except (Exception, psycopg2.Error) as error :
-            print ("Error while fetching data from PostgreSQL", error)      
+                if comment.id not in records:
+                    match1 = re.search(pattern1, comment.body)
+                    commentRequest = comment.body.lower()
+                    commentTemp = commentRequest.replace("\n\n", " ")
+                    comment_token = commentTemp.split(" ")
+                    
+                    if(match1):
+                        memeArray = comment_token[comment_token.index("george") + 2:]
+                        memeName = " ".join(memeArray)
+                    
+                        try:
+                            if comment.author is None:
+                                continue                        
+                            results = imageSearch(memeName)
+                            if(len(results) != 0):
+                                AddReply(results, comment, comment.author.name, memeName)     
+                            else:
+                                AddEmptyReply(memeName, comment, comment.author.name)                                      
+                            time.sleep(10)                    
+                        except:
+                            return [] 
+            except (Exception, psycopg2.Error) as error :
+                print ("Error while fetching data from PostgreSQL", error)      
 
 
 def main():    
-    thread = {"georgeSubListener": threading.Thread(target = georgeSubListener)}
+    thread = {"georgeThreadCommentsListener": threading.Thread(target = georgeThreadCommentsListener)}
     for thread in thread.values():
         thread.start()
 

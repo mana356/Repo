@@ -109,7 +109,7 @@ def georgeThreadCommentsListener(submissionID):
         cur = conn.cursor()
         sql = "SELECT comment_id from tblcommentsbybot where comment_id='"+comment.id+"';"
         cur.execute(sql)
-        records = cursor.fetchall() 
+        records = cur.fetchall() 
         conn.commit()
         cur.close()
         conn.close()

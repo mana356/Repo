@@ -77,8 +77,6 @@ def AddEmptyReply(searchText, comment, author):
     except (Exception, psycopg2.Error) as error :
         print ("Error while fetching data from PostgreSQL", error)
 
-def()
-
 def georgeThreadCommentsListener():
     sub = getConfigHeroku('sub')
     subreddit = reddit.subreddit(sub)

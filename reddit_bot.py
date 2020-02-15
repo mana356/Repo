@@ -1,27 +1,14 @@
-import praw, re, time, pytz, yaml, threading, requests, logging, json, base64
+import praw, re, time, pytz, yaml, threading, requests, json, base64
+import os
 from datetime import date
 
-fname = "BotLogFile.log"
+def getConfigHeroku(key):
+    result = os.environ.get(key,'None')
+    return result
 
-logging.basicConfig(filename=fname, 
-                    format='%(asctime)s %(message)s', 
-                    filemode='w')
-
-logger=logging.getLogger() 
-logger.setLevel(logging.DEBUG)
-
-def load_config(config_file):
-    with open(config_file, 'r') as stream:
-        try:
-            return yaml.safe_load(stream)
-        except yaml.YAMLError as exc:
-            logger.debug("Config not found! | error: "+exc) 
-
-config = load_config('config.yml')
-
-reddit = praw.Reddit(client_id=config['id'], client_secret=config['secret'],
-                     password=config['password'], user_agent=config['agent'],
-                     username=config['username'])
+reddit = praw.Reddit(client_id=getConfigHeroku('id'), client_secret=getConfigHeroku('secret'),
+                     password=getConfigHeroku('password'), user_agent=getConfigHeroku('agent'),
+                     username=getConfigHeroku('username')
 
 def imageSearch(memeName):
     result = giphySearch(memeName,"gifs")        
@@ -33,36 +20,36 @@ def imageSearch(memeName):
        
 
 def imgurSearch(searchText):
-    logger.info('imgur search started for text: '+searchText)
+    print('imgur search started for text: '+searchText)
     imgurSearchUrl = "https://api.imgur.com/3/gallery/search/top/all/1?q=" 
-    imgurAccessHeader = {"Accept": "application/json", "Content-Type": "application/json","Authorization": config['ImgurAuth']}
+    imgurAccessHeader = {"Accept": "application/json", "Content-Type": "application/json","Authorization": getConfigHeroku('ImgurAuth')}
     imgurQuery = searchText
     imgurSearchUrl = imgurSearchUrl + imgurQuery
-    logger.info(imgurSearchUrl)
+    print(imgurSearchUrl)
     try:
       imgurResponse = requests.get(imgurSearchUrl,headers=imgurAccessHeader)
       data = imgurResponse.json()["data"][0]
       meme = {"title":data["title"], "url": data["link"]}
-      logger.info("New Reply: "+json.dumps(meme))
+      print("New Reply: "+json.dumps(meme))
       return [meme]
     except:
-      logger.info("not found on imgur: "+searchText)
+      print("not found on imgur: "+searchText)
       return []
 
 def giphySearch(searchText,searchType):
-    logger.info('giphy search started for type: '+searchType+" and text: "+searchText)
-    giphySearchUrl = "https://api.giphy.com/v1/"+searchType+"/search?api_key="+config['GiphyAuth']+"&limit=1&q="
+    print('giphy search started for type: '+searchType+" and text: "+searchText)
+    giphySearchUrl = "https://api.giphy.com/v1/"+searchType+"/search?api_key="+getConfigHeroku('GiphyAuth')+"&limit=1&q="
     giphyQuery = searchText
     giphySearchUrl = giphySearchUrl + giphyQuery
-    logger.info(giphySearchUrl)
+    print(giphySearchUrl)
     try:        
         giphyResponse = requests.get(giphySearchUrl)        
         data = giphyResponse.json()["data"][0]
         meme = {"title":data["title"], "url": data["url"]}
-        logger.info("New Reply: "+json.dumps(meme))
+        print("New Reply: "+json.dumps(meme))
         return [meme]
     except:
-        logger.info("not found on giphy for type: "+ searchType)
+        print("not found on giphy for type: "+ searchType)
         return []
 
 def AddReply(results, comment):    
@@ -90,21 +77,21 @@ def AddEmptyReply(searchText, comment):
         return []
 
 def georgeSubListener():
-    logger.info('George is listening now!')
-    sub = config['sub']
+    print('George is listening now!')
+    sub = getConfigHeroku('sub')
     subreddit = reddit.subreddit(sub)
     while True:        
         for submission in subreddit.stream.submissions():
             print(submission.title)
-            subToReplyIn = config['threadTitle']
-            author = config['author']
+            subToReplyIn = getConfigHeroku('threadTitle')
+            author = getConfigHeroku('author')
             matchsub = re.search(subToReplyIn, submission.title)
             if matchsub and submission.author == author: 
                 print("submission found!")       
                 georgeThreadCommentsListener(submission.id)
 
 def georgeThreadCommentsListener(submissionID):
-    sub = config['sub']
+    sub = getConfigHeroku('sub')
     subreddit = reddit.subreddit(sub)
     pattern1 = r"\b(.|\n)*(g|G)eorge (a|A)dd (.)*\b" 
     

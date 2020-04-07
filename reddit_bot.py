@@ -48,7 +48,7 @@ def giphySearch(searchText,searchType):
         return []
 
 def AddReply(results, comment, author, searchText):    
-    reply = "[{}]({})\n\n ^(Results fetched from {})  ".format(results[0]["title"],results[0]["url"],results[0]["source"])    
+    reply = "[{}]({})  ".format(results[0]["title"],results[0]["url"])    
     try:
         if comment is not None:
             comment.reply(reply) 

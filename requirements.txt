@@ -16,4 +16,4 @@ uritemplate==3.0.0
 urllib3==1.25.7
 websocket-client==0.56.0
 psycopg2==2.8.4
-BeautifulSoup4==1.9.5
+beautifulsoup4==4.1.3

@@ -2,6 +2,8 @@ import praw, re, pytz, yaml, threading, requests, json, base64
 import os
 import psycopg2
 from datetime import datetime
+from bs4 import BeautifulSoup
+
 
 
 def getConfigHeroku(key):
@@ -85,13 +87,13 @@ def AddReply(results, comment, author, searchText):
     try:
         if comment is not None:
             comment.reply(reply) 
-            conn = psycopg2.connect(getConfigHeroku('dbConnString'))
-            cur = conn.cursor()
-            sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on,searchtext) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+str(datetime.now())+"','"+searchText+"');"
-            cur.execute(sql)
-            conn.commit()
-            cur.close()
-            conn.close()
+            # conn = psycopg2.connect(getConfigHeroku('dbConnString'))
+            # cur = conn.cursor()
+            # sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on,searchtext) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+str(datetime.now())+"','"+searchText+"');"
+            # cur.execute(sql)
+            # conn.commit()
+            # cur.close()
+            # conn.close()
     except (Exception, psycopg2.Error) as error :
         print ("Error while fetching data from PostgreSQL", error)
 
@@ -100,13 +102,13 @@ def AddEmptyReply(searchText, comment, author):
     try:
         if comment is not None:
             comment.reply(reply)
-            conn = psycopg2.connect(getConfigHeroku('dbConnString'))
-            cur = conn.cursor()
-            sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on,searchtext) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+str(datetime.now())+"','"+searchText+"');"
-            cur.execute(sql)
-            conn.commit()
-            cur.close()
-            conn.close() 
+            # conn = psycopg2.connect(getConfigHeroku('dbConnString'))
+            # cur = conn.cursor()
+            # sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on,searchtext) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+str(datetime.now())+"','"+searchText+"');"
+            # cur.execute(sql)
+            # conn.commit()
+            # cur.close()
+            # conn.close() 
     except (Exception, psycopg2.Error) as error :
         print ("Error while fetching data from PostgreSQL", error)
 

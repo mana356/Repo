@@ -2,7 +2,7 @@ import praw, re, pytz, yaml, threading, requests, json, base64
 import os
 import psycopg2
 from datetime import datetime
-import BeautifulSoup
+from bs4 import BeautifulSoup
 
 
 

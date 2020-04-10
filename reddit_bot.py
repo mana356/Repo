@@ -79,7 +79,7 @@ def giphySearch(searchText,searchType):
         return []
 
 def AddReply(results, comment, author, searchText):    
-    if results[0]["title"] is None
+    if not results[0]["title"]
         results[0]["title"] = searchText
     reply = "[{}]({})  ".format(results[0]["title"],results[0]["url"])    
     try:

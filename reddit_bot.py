@@ -120,16 +120,16 @@ def georgeThreadCommentsListener():
             if((comment.submission.author is None) or (comment.submission.author.name != getConfigHeroku('author'))):
                 continue
             try:
-                conn = psycopg2.connect(getConfigHeroku('dbConnString'))
-                cur = conn.cursor()
-                sql = "SELECT comment_id from tblcommentsbybot where comment_id='"+comment.id+"';"
-                cur.execute(sql)
-                records = cur.fetchone() 
-                conn.commit()
-                cur.close()
-                conn.close()
+                # conn = psycopg2.connect(getConfigHeroku('dbConnString'))
+                # cur = conn.cursor()
+                # sql = "SELECT comment_id from tblcommentsbybot where comment_id='"+comment.id+"';"
+                # cur.execute(sql)
+                # records = cur.fetchone() 
+                # conn.commit()
+                # cur.close()
+                # conn.close()
 
-                if records is None:
+                if True:
                     match1 = re.search(pattern1, comment.body)
                     commentRequest = comment.body.lower()
                     commentTemp = commentRequest.replace("\n\n", " ")

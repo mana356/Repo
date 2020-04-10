@@ -14,13 +14,44 @@ reddit = praw.Reddit(client_id=getConfigHeroku('clientid'), client_secret=getCon
 
 
 def imageSearch(memeName):
-    result = giphySearch(memeName,"gifs")        
+    result = googleSearch(memeName)
     if(len(result) == 0):
-        result = imgurSearch(memeName)
+        result = giphySearch(memeName,"gifs")  
         if(len(result) == 0):
-         result = giphySearch(memeName,"stickers")           
+            result = imgurSearch(memeName)
+            if(len(result) == 0):
+                result = giphySearch(memeName,"stickers")           
     return result
-       
+
+def googleSearch(searchText) :
+    searchText = searchText.split()
+    searchText = ("+").join(searchText)
+    url =  'https://www.google.com/search?q=' + searchText + '+gif&tbm=isch'
+    try:
+        response = requests.get(url)    
+        soup = BeautifulSoup(response.text, 'html.parser')
+        links = []
+        for link in soup.find_all('a'):
+            links.append(link.get('href'))
+
+        source = links[14]
+        i=1
+
+        while "search" in source or "discover" in source or "pinterest" in source:
+            source = links[14 + i]
+            i=i+1
+        
+        source=source[7:]
+        source_array = source.split('&')
+        resurl = source_array[0]
+        response = requests.get(resurl)    
+        soup = BeautifulSoup(response.text, 'html.parser')
+        title = soup.find_all('title')
+        titletext = title[0].contents[0].split("GIF")[0].split("gif")[0]
+        meme = {"title":resurl, "url": titletext, "source":"Google"}
+        return [meme]
+    except:
+      return []   
 
 def imgurSearch(searchText):
     imgurSearchUrl = "https://api.imgur.com/3/gallery/search/top/all/1?q=" 

@@ -79,6 +79,8 @@ def giphySearch(searchText,searchType):
         return []
 
 def AddReply(results, comment, author, searchText):    
+    if results[0]["title"] is None
+        results[0]["title"] = searchText
     reply = "[{}]({})  ".format(results[0]["title"],results[0]["url"])    
     try:
         if comment is not None:
@@ -136,6 +138,8 @@ def georgeThreadCommentsListener():
                     if(match1):
                         memeArray = comment_token[comment_token.index("george") + 2:]
                         memeName = " ".join(memeArray)
+                        print(memeName)
+                        
                     
                         try:
                             if comment.author is None:

@@ -87,13 +87,13 @@ def AddReply(results, comment, author, searchText):
     try:
         if comment is not None:
             comment.reply(reply) 
-            conn = psycopg2.connect(getConfigHeroku('dbConnString'))
-            cur = conn.cursor()
-            sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on,searchtext) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+str(datetime.now())+"','"+searchText+"');"
-            cur.execute(sql)
-            conn.commit()
-            cur.close()
-            conn.close()
+            # conn = psycopg2.connect(getConfigHeroku('dbConnString'))
+            # cur = conn.cursor()
+            # sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on,searchtext) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+str(datetime.now())+"','"+searchText+"');"
+            # cur.execute(sql)
+            # conn.commit()
+            # cur.close()
+            # conn.close()
     except(Exception) as error :
         print (error)
 
@@ -114,22 +114,23 @@ def AddEmptyReply(searchText, comment, author):
 
 def georgeThreadCommentsListener():
     sub = getConfigHeroku('sub')
-    subreddit = reddit.subreddit(sub)
-    pattern1 = r"\b(.|\n)*(g|G)eorge (a|A)dd (.)*\b" 
+    subreddit = reddit.subreddit('all')
+    pattern1 = r"\b(.|\n)*(i|I)nsert (.)*\b" 
     
     while True:
         for comment in subreddit.stream.comments():
-            if((comment.submission.author is None) or (comment.submission.author.name != getConfigHeroku('author'))):
+            if((comment.submission.author is None):
+            # or (comment.submission.author.name != getConfigHeroku('author'))):
                 continue
             try:
-                conn = psycopg2.connect(getConfigHeroku('dbConnString'))
-                cur = conn.cursor()
-                sql = "SELECT comment_id from tblcommentsbybot where comment_id='"+comment.id+"';"
-                cur.execute(sql)
-                records = cur.fetchone() 
-                conn.commit()
-                cur.close()
-                conn.close()
+                # conn = psycopg2.connect(getConfigHeroku('dbConnString'))
+                # cur = conn.cursor()
+                # sql = "SELECT comment_id from tblcommentsbybot where comment_id='"+comment.id+"';"
+                # cur.execute(sql)
+                # records = cur.fetchone() 
+                # conn.commit()
+                # cur.close()
+                # conn.close()
 
                 if records is None:
                     match1 = re.search(pattern1, comment.body)
@@ -149,8 +150,8 @@ def georgeThreadCommentsListener():
                             results = imageSearch(memeName)
                             if(len(results) != 0):
                                 AddReply(results, comment, comment.author.name, memeName)     
-                            else:
-                                AddEmptyReply(memeName, comment, comment.author.name)       
+                            # else:
+                            #     AddEmptyReply(memeName, comment, comment.author.name)       
                         except(Exception) as error :
                         	print (error)
             except (Exception, psycopg2.Error) as error :

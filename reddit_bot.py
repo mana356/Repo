@@ -39,7 +39,7 @@ def googleSearch(searchText) :
         source = links[14]
         i=1
 
-        while "search" in source or "discover" in source or "pinterest" in source:
+        while "search" in source or "discover" in source or "pinterest" in source or "metro" in source:
             source = links[14 + i]
             i=i+1
         
@@ -81,8 +81,8 @@ def giphySearch(searchText,searchType):
         return []
 
 def AddReply(results, comment, author, searchText):    
-    # if not results[0]["title"]
-    #     results[0]["title"] = searchText
+    if results[0]["title"] == "":
+        results[0]["title"] = searchText
     reply = "[{}]({})  ".format(results[0]["title"],results[0]["url"])    
     try:
         if comment is not None:

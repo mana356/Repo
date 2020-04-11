@@ -50,7 +50,7 @@ def googleSearch(searchText) :
         soup = BeautifulSoup(response.text, 'html.parser')
         title = soup.find_all('title')
         titletext = title[0].contents[0].split("GIF")[0].split("gif")[0]
-        meme = {"title":resurl, "url": titletext, "source":"Google"}
+        meme = {"title":titletext, "url":resurl , "source":"Google"}
         return [meme]
     except:
       return []   
@@ -87,30 +87,30 @@ def AddReply(results, comment, author, searchText):
     try:
         if comment is not None:
             comment.reply(reply) 
-            # conn = psycopg2.connect(getConfigHeroku('dbConnString'))
-            # cur = conn.cursor()
-            # sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on,searchtext) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+str(datetime.now())+"','"+searchText+"');"
-            # cur.execute(sql)
-            # conn.commit()
-            # cur.close()
-            # conn.close()
-    except (Exception, psycopg2.Error) as error :
-        print ("Error while fetching data from PostgreSQL", error)
+            conn = psycopg2.connect(getConfigHeroku('dbConnString'))
+            cur = conn.cursor()
+            sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on,searchtext) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+str(datetime.now())+"','"+searchText+"');"
+            cur.execute(sql)
+            conn.commit()
+            cur.close()
+            conn.close()
+    except(Exception) as error :
+        print (error)
 
 def AddEmptyReply(searchText, comment, author):    
     reply = "Sorry! I could not find anything related to the words *'"+searchText+"'*\n\n Could you try rephrasing please?" 
     try:
         if comment is not None:
             comment.reply(reply)
-            # conn = psycopg2.connect(getConfigHeroku('dbConnString'))
-            # cur = conn.cursor()
-            # sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on,searchtext) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+str(datetime.now())+"','"+searchText+"');"
-            # cur.execute(sql)
-            # conn.commit()
-            # cur.close()
-            # conn.close() 
-    except (Exception, psycopg2.Error) as error :
-        print ("Error while fetching data from PostgreSQL", error)
+            conn = psycopg2.connect(getConfigHeroku('dbConnString'))
+            cur = conn.cursor()
+            sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on,searchtext) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+str(datetime.now())+"','"+searchText+"');"
+            cur.execute(sql)
+            conn.commit()
+            cur.close()
+            conn.close() 
+    except(Exception) as error :
+        print (error)
 
 def georgeThreadCommentsListener():
     sub = getConfigHeroku('sub')
@@ -122,16 +122,16 @@ def georgeThreadCommentsListener():
             if((comment.submission.author is None) or (comment.submission.author.name != getConfigHeroku('author'))):
                 continue
             try:
-                # conn = psycopg2.connect(getConfigHeroku('dbConnString'))
-                # cur = conn.cursor()
-                # sql = "SELECT comment_id from tblcommentsbybot where comment_id='"+comment.id+"';"
-                # cur.execute(sql)
-                # records = cur.fetchone() 
-                # conn.commit()
-                # cur.close()
-                # conn.close()
+                conn = psycopg2.connect(getConfigHeroku('dbConnString'))
+                cur = conn.cursor()
+                sql = "SELECT comment_id from tblcommentsbybot where comment_id='"+comment.id+"';"
+                cur.execute(sql)
+                records = cur.fetchone() 
+                conn.commit()
+                cur.close()
+                conn.close()
 
-                if True:
+                if records is None:
                     match1 = re.search(pattern1, comment.body)
                     commentRequest = comment.body.lower()
                     commentTemp = commentRequest.replace("\n\n", " ")
@@ -151,8 +151,8 @@ def georgeThreadCommentsListener():
                                 AddReply(results, comment, comment.author.name, memeName)     
                             else:
                                 AddEmptyReply(memeName, comment, comment.author.name)       
-                        except:
-                            return [] 
+                        except(Exception) as error :
+                        	print (error)
             except (Exception, psycopg2.Error) as error :
                 print ("Error while fetching data from PostgreSQL", error)      
             except:

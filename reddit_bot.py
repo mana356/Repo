@@ -132,28 +132,28 @@ def georgeThreadCommentsListener():
                 # cur.close()
                 # conn.close()
 
-                if records is None:
-                    match1 = re.search(pattern1, comment.body)
-                    commentRequest = comment.body.lower()
-                    commentTemp = commentRequest.replace("\n\n", " ")
-                    comment_token = commentTemp.split(" ")
+                # if records is None:
+                match1 = re.search(pattern1, comment.body)
+                commentRequest = comment.body.lower()
+                commentTemp = commentRequest.replace("\n\n", " ")
+                comment_token = commentTemp.split(" ")
+                
+                if(match1):
+                    memeArray = comment_token[comment_token.index("george") + 2:]
+                    memeName = " ".join(memeArray)
+                    print(memeName)
                     
-                    if(match1):
-                        memeArray = comment_token[comment_token.index("george") + 2:]
-                        memeName = " ".join(memeArray)
-                        print(memeName)
-                        
-                    
-                        try:
-                            if comment.author is None:
-                                continue                        
-                            results = imageSearch(memeName)
-                            if(len(results) != 0):
-                                AddReply(results, comment, comment.author.name, memeName)     
-                            # else:
-                            #     AddEmptyReply(memeName, comment, comment.author.name)       
-                        except(Exception) as error :
-                        	print (error)
+                
+                    try:
+                        if comment.author is None:
+                            continue                        
+                        results = imageSearch(memeName)
+                        if(len(results) != 0):
+                            AddReply(results, comment, comment.author.name, memeName)     
+                        # else:
+                        #     AddEmptyReply(memeName, comment, comment.author.name)       
+                    except(Exception) as error :
+                        print (error)
             except (Exception, psycopg2.Error) as error :
                 print ("Error while fetching data from PostgreSQL", error)      
             except:

@@ -39,7 +39,7 @@ def googleSearch(searchText) :
         source = links[14]
         i=1
 
-        while "search" in source or "discover" in source or "pinterest" in source or "metro" in source:
+        while "search" in source or "discover" in source or "pinterest" in source or "metro" in source or "explore" in source:
             source = links[14 + i]
             i=i+1
         

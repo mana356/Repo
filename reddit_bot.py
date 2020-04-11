@@ -119,7 +119,7 @@ def georgeThreadCommentsListener():
     
     while True:
         for comment in subreddit.stream.comments():
-            if((comment.submission.author is None):
+            if(comment.submission.author is None):
             # or (comment.submission.author.name != getConfigHeroku('author'))):
                 continue
             try:

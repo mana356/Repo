@@ -27,7 +27,7 @@ def imageSearch(memeName):
 def googleSearch(searchText) :
     searchText = searchText.split()
     searchText = ("+").join(searchText)
-    url =  'https://www.google.com/search?q=' + searchText + '+gif&tbm=isch'
+    url = 'https://www.google.com/search?q=' + searchText + '&tbm=isch&tbs=itp%3Aanimated'
     try:
         response = requests.get(url)    
         soup = BeautifulSoup(response.text, 'html.parser')
@@ -97,10 +97,11 @@ def AddReply(results, comment, author, searchText):
     reply = "[{}]({})  ".format(results[0]["title"],results[0]["url"])    
     try:
         if comment is not None:
-            if(comment.parent is not None):
-                comment.parent.reply(reply)
+            if("t3" in comment.parent_id):
+                comment.reply(reply)                 
             else:
-                comment.reply(reply) 
+                comment = reddit.comment(comment.parent())
+                comment.reply(reply)
             conn = psycopg2.connect(getConfigHeroku('dbConnString'))
             cur = conn.cursor()
             sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on,searchtext) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+str(datetime.now())+"','"+searchText+"');"

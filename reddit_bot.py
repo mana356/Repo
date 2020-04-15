@@ -97,7 +97,10 @@ def AddReply(results, comment, author, searchText):
     reply = "[{}]({})  ".format(results[0]["title"],results[0]["url"])    
     try:
         if comment is not None:
-            comment.reply(reply) 
+            if(comment.parent is not None):
+                comment.parent.reply(reply)
+            else:
+                comment.reply(reply) 
             conn = psycopg2.connect(getConfigHeroku('dbConnString'))
             cur = conn.cursor()
             sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on,searchtext) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+str(datetime.now())+"','"+searchText+"');"

@@ -3,6 +3,8 @@ import os
 import psycopg2
 from datetime import datetime
 from bs4 import BeautifulSoup
+import random 
+import urllib.parse
 
 
 
@@ -153,7 +155,8 @@ def georgeThreadCommentsListener():
                     
                         try:
                             if comment.author is None:
-                                continue                        
+                                continue          
+                            memeName = urllib.parse.quote(memeName)                   
                             results = imageSearch(memeName)
                             if(len(results) != 0):
                                 AddReply(results, comment, comment.author.name, memeName)     

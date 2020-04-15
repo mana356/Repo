@@ -16,13 +16,8 @@ reddit = praw.Reddit(client_id=getConfigHeroku('clientid'), client_secret=getCon
 
 
 def imageSearch(memeName):
-    result = googleSearch(memeName)
-    if(len(result) == 0):
-        result = giphySearch(memeName,"gifs")  
-        if(len(result) == 0):
-            result = imgurSearch(memeName)
-            if(len(result) == 0):
-                result = giphySearch(memeName,"stickers")           
+    my_list = [giphySearchGifs, googleSearch, imgurSearch, giphySearchStickers]
+    result = random.choice(my_list)(memeName)              
     return result
 
 def googleSearch(searchText) :
@@ -68,8 +63,20 @@ def imgurSearch(searchText):
     except:
       return []
 
-def giphySearch(searchText,searchType):
-    giphySearchUrl = "https://api.giphy.com/v1/"+searchType+"/search?api_key="+getConfigHeroku('GiphyAuth')+"&limit=1&q="
+def giphySearchStickers(searchText):
+    giphySearchUrl = "https://api.giphy.com/v1/stickers/search?api_key="+getConfigHeroku('GiphyAuth')+"&limit=1&q="
+    giphyQuery = searchText
+    giphySearchUrl = giphySearchUrl + giphyQuery
+    try:        
+        giphyResponse = requests.get(giphySearchUrl)        
+        data = giphyResponse.json()["data"][0]
+        meme = {"title":data["title"], "url": data["url"], "source":"Giphy"}
+        return [meme]
+    except:
+        return []
+
+def giphySearchGifs(searchText):
+    giphySearchUrl = "https://api.giphy.com/v1/gifs/search?api_key="+getConfigHeroku('GiphyAuth')+"&limit=1&q="
     giphyQuery = searchText
     giphySearchUrl = giphySearchUrl + giphyQuery
     try:        

@@ -139,7 +139,7 @@ def georgeThreadCommentsListener():
                     comment_token = commentTemp.split(" ")
                     
                     if(match1):
-                        memeArray = comment_token[comment_token.index("george") + 2:]
+                        memeArray = comment_token[comment_token.index("insert") + 1:]
                         memeName = " ".join(memeArray)
                         print(memeName)
                         

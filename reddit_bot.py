@@ -100,8 +100,7 @@ def AddReply(results, comment, author, searchText):
             if("t3" in comment.parent_id):
                 comment.reply(reply)                 
             else:
-                comment = reddit.comment(comment.parent())
-                comment.reply(reply)
+                reddit.comment(comment.parent()).reply(reply)
             conn = psycopg2.connect(getConfigHeroku('dbConnString'))
             cur = conn.cursor()
             sql = "INSERT INTO tblcommentsbybot(comment_id,author,reply,added_on,searchtext) VALUES('"+comment.id+"','"+author+"','"+reply+"','"+str(datetime.now())+"','"+searchText+"');"

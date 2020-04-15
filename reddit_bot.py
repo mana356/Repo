@@ -19,7 +19,9 @@ reddit = praw.Reddit(client_id=getConfigHeroku('clientid'), client_secret=getCon
 
 def imageSearch(memeName):
     my_list = [giphySearchGifs, googleSearch, imgurSearch, giphySearchStickers]
-    result = random.choice(my_list)(memeName)              
+    result = random.choice(my_list)(memeName)      
+    if(len(result)==0):
+        result = googleSearch(memeName)      
     return result
 
 def googleSearch(searchText) :

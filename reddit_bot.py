@@ -18,7 +18,7 @@ reddit = praw.Reddit(client_id=getConfigHeroku('clientid'), client_secret=getCon
 
 
 def imageSearch(memeName):
-    my_list = [giphySearchGifs, googleSearch, imgurSearch, giphySearchStickers]
+    my_list = [giphySearchGifs, googleSearch]
     result = random.choice(my_list)(memeName)      
     if(len(result)==0):
         result = googleSearch(memeName)      
@@ -94,7 +94,7 @@ def giphySearchGifs(searchText):
 def AddReply(results, comment, author, searchText):    
     if results[0]["title"] == "":
         results[0]["title"] = searchText
-    reply = "[{}]({})  ".format(results[0]["title"],results[0]["url"])    
+    reply = ">({}) \n\n [{}]({}) by u/{}  ".format(searchText, results[0]["title"],results[0]["url"],author)    
     try:
         if comment is not None:
             if("t3" in comment.parent_id):

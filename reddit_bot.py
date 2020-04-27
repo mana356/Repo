@@ -153,7 +153,14 @@ def georgeThreadCommentsListener():
                     comment_token = commentTemp.split(" ")
                     
                     if(match1):
+                        lastItem = comment_token.index("insert") + 5
                         memeArray = comment_token[comment_token.index("insert") + 1:]
+                        if "." in memeArray:
+                            lastItem1 = memeArray.index(".")
+                        if lastItem<=lastItem1:
+                            memeArray = memeArray[:lastItem]
+                        else:
+                            memeArray = memeArray[:lastItem1]
                         memeName = " ".join(memeArray)
                         print(memeName)
                         

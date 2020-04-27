@@ -91,10 +91,11 @@ def giphySearchGifs(searchText):
     except:
         return []
 
-def AddReply(results, comment, author, searchText):    
+def AddReply(results, comment, author, searchText, textArray):    
     if results[0]["title"] == "":
         results[0]["title"] = searchText
-    reply = ">{} \n\n [{}]({}) by u/{}  ".format(searchText, results[0]["title"],results[0]["url"],author)    
+    comdText = " ".join(textArray)
+    reply = ">{} \n\n [{}]({}) by u/{}  ".format(comdText, results[0]["title"],results[0]["url"],author)    
     try:
         if comment is not None:
             if("t3" in comment.parent_id):
@@ -149,7 +150,7 @@ def georgeThreadCommentsListener():
                 if records is None:
                     match1 = re.search(pattern1, comment.body)
                     commentRequest = comment.body.lower()
-                    commentTemp = commentRequest.replace("\n\n", " ")
+                    commentTemp = commentRequest.replace("\n\n", " ").replace("."," . ")
                     comment_token = commentTemp.split(" ")
                     
                     if(match1):
@@ -176,7 +177,7 @@ def georgeThreadCommentsListener():
                             memeName = urllib.parse.quote(memeName)                   
                             results = imageSearch(memeName)
                             if(len(results) != 0):
-                                AddReply(results, comment, comment.author.name, memeName)     
+                                AddReply(results, comment, comment.author.name, memeName, memeArray)     
                             # else:
                             #     AddEmptyReply(memeName, comment, comment.author.name)       
                         except(Exception) as error :

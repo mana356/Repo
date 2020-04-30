@@ -1,12 +1,12 @@
 # About
 
-Simple Reddit reply bot for image searches with keywords.
-Currently searches Giphy Stickers, Giphy Gifs and Imgur Top Search Results.
+Simple Reddit reply bot for gif searches with keywords.
+Currently searches Giphy Gifs (through Giphy API) and Google Top Search Results (Beautiful Soup pagde parsing).
 Postgres SQL is used to keep track of bot's comments.
 
 ### Trigger keywords
 
-George add *text*
+Insert *text*
 
 ### Deployment
 

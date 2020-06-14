@@ -18,7 +18,7 @@ reddit = praw.Reddit(client_id=getConfigHeroku('clientid'), client_secret=getCon
 
 
 def imageSearch(memeName):
-    my_list = [giphySearchGifs]
+    my_list = [googleSearch]
     result = random.choice(my_list)(memeName)      
     if(len(result)==0):
         result = googleSearch(memeName)      
@@ -27,7 +27,7 @@ def imageSearch(memeName):
 def googleSearch(searchText) :
     searchText = searchText.split()
     searchText = ("+").join(searchText)
-    url = 'https://www.google.com/search?q=' + searchText + '&tbm=isch&tbs=itp%3Aanimated'
+    url = 'https://www.google.com/search?q=' + searchText + '&tbm=isch'
     try:
         response = requests.get(url)    
         soup = BeautifulSoup(response.text, 'html.parser')

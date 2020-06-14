@@ -18,7 +18,7 @@ reddit = praw.Reddit(client_id=getConfigHeroku('clientid'), client_secret=getCon
 
 
 def imageSearch(memeName):
-    my_list = [giphySearchGifs, googleSearch]
+    my_list = [giphySearchGifs]
     result = random.choice(my_list)(memeName)      
     if(len(result)==0):
         result = googleSearch(memeName)      
@@ -154,19 +154,16 @@ def georgeThreadCommentsListener():
                     comment_token = commentTemp.split(" ")
                     
                     if(match1):
-                        lastItem = comment_token.index("insert") + 5
                         memeArray = comment_token[comment_token.index("insert") + 1:]
-                        print(lastItem)
-                        print(memeArray)
+                        
                         if "." in memeArray:
-                            lastItem1 = memeArray.index(".")
+                            lastItem = memeArray.index(".")
                         else:
-                            lastItem1 = lastItem
-                        print(lastItem1)
-                        if lastItem<=lastItem1:
+                            lastItem = lastItem
+                        
+                        if lastItem:
                             memeArray = memeArray[:lastItem]
-                        else:
-                            memeArray = memeArray[:lastItem1]
+                        
                         memeName = " ".join(memeArray)
                         print(memeName)
                         

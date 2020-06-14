@@ -150,7 +150,7 @@ def georgeThreadCommentsListener():
                 if records is None:
                     match1 = re.search(pattern1, comment.body)
                     commentRequest = comment.body.lower()
-                    commentTemp = commentRequest.replace("\n\n", " ").replace("."," . ")
+                    commentTemp = commentRequest.replace("\n\n", " ").replace("."," . ").replace("*","")
                     comment_token = commentTemp.split(" ")
                     
                     if(match1):

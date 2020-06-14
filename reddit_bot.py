@@ -158,8 +158,8 @@ def georgeThreadCommentsListener():
                         
                         if "." in memeArray:
                             lastItem = memeArray.index(".")
-                    
-                        if lastItem:
+                        print(lastItem)
+                        if lastItem is not None:
                             memeArray = memeArray[:lastItem]
                         
                         memeName = " ".join(memeArray)

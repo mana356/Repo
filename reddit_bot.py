@@ -158,9 +158,7 @@ def georgeThreadCommentsListener():
                         
                         if "." in memeArray:
                             lastItem = memeArray.index(".")
-                        else:
-                            lastItem = lastItem
-                        
+                    
                         if lastItem:
                             memeArray = memeArray[:lastItem]
                         

@@ -1,8 +1,6 @@
-import praw, re, pytz, yaml, threading, requests, json, base64
+import praw, re, yaml, threading, requests
 import os
 from datetime import datetime
-from bs4 import BeautifulSoup
-import random 
 import urllib.parse
 
 
@@ -11,7 +9,7 @@ def load_config(config_file):
         try:
             return yaml.safe_load(stream)
         except yaml.YAMLError as exc:
-            logger.debug("Config not found! | error: "+exc) 
+            print(exc)
 
 config = load_config('config.yml')
 
@@ -151,7 +149,7 @@ def threadCommentsListener():
                             #     AddEmptyReply(memeName, comment, comment.author.name)       
                         except(Exception) as error :
                             print (error) 
-            except (Exception, psycopg2.Error) as error :
+            except (Exception) as error :
                 print ("Error while fetching data from PostgreSQL", error)      
             
 def get_saved_comments():

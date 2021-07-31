@@ -1,5 +1,4 @@
 praw.ini
 reddit_bot_local.py
 BotLogFile.log
-config.yml
 search.py
